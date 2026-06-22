@@ -431,27 +431,27 @@ export default function App() {
     }
 
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#070A13] px-4">
-        <div className="max-w-md w-full bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600"></div>
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
+        <div className="max-w-md w-full bg-white backdrop-blur-xl border border-slate-200 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4ce071] via-[#3fc05e] to-green-600"></div>
           
           <button 
             onClick={() => setShowLogin(false)}
-            className="absolute top-4 right-4 text-slate-400 hover:text-white"
+            className="absolute top-4 right-4 text-slate-400 hover:text-slate-700"
           >
             <X className="w-5 h-5" />
           </button>
 
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center p-3 bg-indigo-500/10 rounded-2xl text-indigo-400 mb-3">
-              <BrainCircuit className="w-10 h-10 animate-pulse" />
+            <div className="inline-flex items-center justify-center p-3 bg-green-500/10 rounded-2xl text-[#3fc05e] mb-3">
+              <BrainCircuit className="w-10 h-10" />
             </div>
-            <h2 className="text-3xl font-extrabold text-white tracking-tight">NexusHR</h2>
-            <p className="text-slate-400 mt-2 text-sm">AI-Enabled Enterprise HR & Workforce Intelligence</p>
+            <h2 className="text-3xl font-extrabold text-slate-800 tracking-tight">NexusHR</h2>
+            <p className="text-slate-500 mt-2 text-sm">AI-Enabled Enterprise HR & Workforce Intelligence</p>
           </div>
 
           {authError && (
-            <div className="bg-red-500/10 border border-red-500/30 text-red-200 text-sm px-4 py-3 rounded-xl mb-6 text-center">
+            <div className="bg-red-50 border border-red-200 text-red-600 text-sm px-4 py-3 rounded-xl mb-6 text-center">
               {authError}
             </div>
           )}
@@ -459,24 +459,24 @@ export default function App() {
           {!isSignup ? (
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
-                <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Username or Email</label>
+                <label className="block text-slate-600 text-xs font-semibold uppercase tracking-wider mb-2">Username or Email</label>
                 <input 
                   type="text" 
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500 transition-colors"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:border-[#3fc05e] transition-colors"
                   placeholder="Enter username..." 
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Password</label>
+                <label className="block text-slate-600 text-xs font-semibold uppercase tracking-wider mb-2">Password</label>
                 <input 
                   type="password" 
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500 transition-colors"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:border-[#3fc05e] transition-colors"
                   placeholder="••••••••" 
                   required
                 />
@@ -484,7 +484,7 @@ export default function App() {
 
               <button 
                 type="submit" 
-                className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold rounded-xl shadow-lg shadow-indigo-600/20 transition-all active:scale-[0.98]"
+                className="w-full py-3 bg-gradient-to-r from-[#4ce071] to-[#3fc05e] hover:from-[#3fc05e] hover:to-[#2da54c] text-white font-semibold rounded-xl shadow-lg shadow-green-500/20 transition-all active:scale-[0.98]"
               >
                 Log In
               </button>
@@ -492,47 +492,47 @@ export default function App() {
           ) : (
             <form onSubmit={handleSignup} className="space-y-4">
               <div>
-                <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Username</label>
+                <label className="block text-slate-600 text-xs font-semibold uppercase tracking-wider mb-2">Username</label>
                 <input 
                   type="text" 
                   value={signupUsername}
                   onChange={(e) => setSignupUsername(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500 transition-colors"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:border-[#3fc05e] transition-colors"
                   placeholder="johndoe" 
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Email Address</label>
+                <label className="block text-slate-600 text-xs font-semibold uppercase tracking-wider mb-2">Email Address</label>
                 <input 
                   type="email" 
                   value={signupEmail}
                   onChange={(e) => setSignupEmail(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500 transition-colors"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:border-[#3fc05e] transition-colors"
                   placeholder="john.doe@nexushr.com" 
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Password</label>
+                <label className="block text-slate-600 text-xs font-semibold uppercase tracking-wider mb-2">Password</label>
                 <input 
                   type="password" 
                   value={signupPassword}
                   onChange={(e) => setSignupPassword(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500 transition-colors"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:border-[#3fc05e] transition-colors"
                   placeholder="••••••••" 
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Role Type</label>
+                <label className="block text-slate-600 text-xs font-semibold uppercase tracking-wider mb-2">Role Type</label>
                 <select
                   value={signupRole}
                   onChange={(e) => setSignupRole(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500 transition-colors"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:border-[#3fc05e] transition-colors"
                 >
                   <option value="ROLE_EMPLOYEE">Standard Employee</option>
                   <option value="ROLE_MANAGER">Department Manager</option>
@@ -542,26 +542,26 @@ export default function App() {
 
               <button 
                 type="submit" 
-                className="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold rounded-xl shadow-lg transition-all active:scale-[0.98]"
+                className="w-full py-3 bg-gradient-to-r from-[#4ce071] to-[#3fc05e] hover:from-[#3fc05e] hover:to-[#2da54c] text-white font-semibold rounded-xl shadow-lg shadow-green-500/20 transition-all active:scale-[0.98]"
               >
                 Sign Up Account
               </button>
             </form>
           )}
 
-          <div className="mt-6 border-t border-slate-800/80 pt-6">
+          <div className="mt-6 border-t border-slate-200 pt-6">
             <span className="block text-center text-xs text-slate-500 font-semibold mb-3">QUICK LOG IN OPTIONS</span>
             <div className="grid grid-cols-3 gap-2">
-              <button onClick={() => { demoLogin('admin'); setIsSignup(false); }} className="px-2 py-1.5 bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-lg text-xs font-medium text-slate-300 hover:text-white transition-all">Admin Profile</button>
-              <button onClick={() => { demoLogin('manager'); setIsSignup(false); }} className="px-2 py-1.5 bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-lg text-xs font-medium text-slate-300 hover:text-white transition-all">Manager Profile</button>
-              <button onClick={() => { demoLogin('employee'); setIsSignup(false); }} className="px-2 py-1.5 bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-lg text-xs font-medium text-slate-300 hover:text-white transition-all">Employee Portal</button>
+              <button onClick={() => { demoLogin('admin'); setIsSignup(false); }} className="px-2 py-1.5 bg-slate-50 border border-slate-200 hover:border-slate-300 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all">Admin Profile</button>
+              <button onClick={() => { demoLogin('manager'); setIsSignup(false); }} className="px-2 py-1.5 bg-slate-50 border border-slate-200 hover:border-slate-300 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all">Manager Profile</button>
+              <button onClick={() => { demoLogin('employee'); setIsSignup(false); }} className="px-2 py-1.5 bg-slate-50 border border-slate-200 hover:border-slate-300 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition-all">Employee Portal</button>
             </div>
           </div>
 
           <div className="mt-6 text-center">
             <button 
               onClick={() => { setIsSignup(!isSignup); setAuthError(''); }}
-              className="text-xs text-indigo-400 hover:text-indigo-300 font-medium"
+              className="text-xs text-[#3fc05e] hover:text-[#2da54c] font-semibold"
             >
               {isSignup ? 'Already have an account? Log In' : "Don't have an account? Sign Up"}
             </button>
