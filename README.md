@@ -6,55 +6,33 @@
 
 1. **Java 21 (JDK)** - Ensure `java` is in your PATH.
 2. **Maven** - Will be auto-downloaded by the included `mvnw.cmd` wrapper if you don't have it.
+3. **Docker Desktop** - Required to spin up the PostgreSQL and Redis containers.
 
-*Note: This project is fully standalone. It uses an H2 in-memory database and an in-memory token cache. No external database (PostgreSQL) or cache (Redis) installations are required!*
+*Note: This project is a production-grade system. It uses PostgreSQL 17 for persistent data storage and Redis 7+ for caching. The included startup scripts automatically spin these up using Docker Compose.*
 
 ## Quick Start
 
-### Step 1: Build the project
+### Backend
 
-Open a terminal in the `nexushr` folder and run:
+Open a terminal in the project root and run:
 
 ```powershell
-.\mvnw.cmd clean compile -DskipTests
+.\start-backend.bat
 ```
 
-This will auto-download Maven if not installed and build the whole project.
+*This single script automatically runs `docker-compose up -d` to start the PostgreSQL and Redis databases, compiles the Java code, and opens new terminal windows for the API Gateway and the three Spring Boot microservices.*
 
-### Step 2: Run Each Service
+### Frontend
 
-Open **separate terminals** for each service:
+Open a second terminal in the project root and run:
 
-**Terminal 1 - Auth Service (port 8081):**
 ```powershell
-.\mvnw.cmd -pl auth-service spring-boot:run
+.\start-frontend.bat
 ```
 
-**Terminal 2 - Employee Service (port 8082):**
-```powershell
-.\mvnw.cmd -pl employee-service spring-boot:run
-```
+*This script installs dependencies and starts the React/Vite development server.*
 
-**Terminal 3 - Payroll Service (port 8083):**
-```powershell
-.\mvnw.cmd -pl payroll-service spring-boot:run
-```
-
-**Terminal 4 - API Gateway (port 8080):**
-```powershell
-.\mvnw.cmd -pl api-gateway spring-boot:run
-```
-
-### Step 3: Run the Frontend
-
-Open a new terminal in the `frontend` folder and run:
-```powershell
-cd frontend
-npm install
-npm run dev
-```
-
-Then open `http://localhost:5173` in your browser.
+Then open the URL printed in your terminal (usually `http://localhost:5173` or `http://localhost:5174`) in your browser to view the custom NexusHR Landing Page and Dashboard.
 
 ## Default Admin Credentials
 
