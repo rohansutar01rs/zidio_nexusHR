@@ -3,6 +3,9 @@ echo ==========================================
 echo Starting NexusHR Backend Services...
 echo ==========================================
 
+echo Starting PostgreSQL and Redis containers...
+call docker-compose up -d
+
 echo Building the project...
 call mvnw.cmd clean install -DskipTests
 
