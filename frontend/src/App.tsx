@@ -8,7 +8,6 @@ import {
   LineChart, Line, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar
 } from 'recharts';
 import { api, useMock } from './services/api';
-import LandingPage from './LandingPage';
 
 // Types
 interface UserSession {
@@ -83,7 +82,6 @@ export default function App() {
   const [signupRole, setSignupRole] = useState('ROLE_EMPLOYEE');
   const [authError, setAuthError] = useState('');
   const [isSignup, setIsSignup] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
 
   // App active tab
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -426,21 +424,10 @@ export default function App() {
 
   // Render Login / Signup Form
   if (!user) {
-    if (!showLogin) {
-      return <LandingPage onLoginClick={() => setShowLogin(true)} />;
-    }
-
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
         <div className="max-w-md w-full bg-white backdrop-blur-xl border border-slate-200 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4ce071] via-[#3fc05e] to-green-600"></div>
-          
-          <button 
-            onClick={() => setShowLogin(false)}
-            className="absolute top-4 right-4 text-slate-400 hover:text-slate-700"
-          >
-            <X className="w-5 h-5" />
-          </button>
 
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center p-3 bg-green-500/10 rounded-2xl text-[#3fc05e] mb-3">
