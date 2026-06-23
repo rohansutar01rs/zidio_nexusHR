@@ -560,14 +560,14 @@ export default function App() {
 
   // Active views content generators
   return (
-    <div className="min-h-screen flex bg-slate-50">
+    <div className="min-h-screen flex bg-slate-100">
       
       {/* SIDEBAR */}
       <aside className="w-64 bg-white/90 border-r border-slate-200 flex flex-col justify-between select-none">
         <div>
           {/* Logo */}
           <div className="p-6 flex items-center gap-3 border-b border-slate-200">
-            <div className="p-2 bg-indigo-600 rounded-xl text-slate-800">
+            <div className="p-2 bg-indigo-600 rounded-xl text-white">
               <BrainCircuit className="w-6 h-6" />
             </div>
             <div>
@@ -582,7 +582,7 @@ export default function App() {
               onClick={() => setActiveTab('dashboard')}
               className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === 'dashboard' 
-                  ? 'bg-indigo-600 text-slate-800 shadow-lg shadow-indigo-600/10' 
+                  ? 'bg-indigo-50 text-indigo-700 shadow-sm' 
                   : 'text-slate-500 hover:bg-slate-100 hover:text-slate-800'
               }`}
             >
@@ -595,7 +595,7 @@ export default function App() {
                 onClick={() => setActiveTab('employees')}
                 className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                   activeTab === 'employees' 
-                    ? 'bg-indigo-600 text-slate-800 shadow-lg shadow-indigo-600/10' 
+                    ? 'bg-indigo-50 text-indigo-700 shadow-sm' 
                     : 'text-slate-500 hover:bg-slate-100 hover:text-slate-800'
                 }`}
               >
@@ -608,7 +608,7 @@ export default function App() {
               onClick={() => setActiveTab('leaves')}
               className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === 'leaves' 
-                  ? 'bg-indigo-600 text-slate-800 shadow-lg shadow-indigo-600/10' 
+                  ? 'bg-indigo-50 text-indigo-700 shadow-sm' 
                   : 'text-slate-500 hover:bg-slate-100 hover:text-slate-800'
               }`}
             >
@@ -620,7 +620,7 @@ export default function App() {
               onClick={() => setActiveTab('payroll')}
               className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === 'payroll' 
-                  ? 'bg-indigo-600 text-slate-800 shadow-lg shadow-indigo-600/10' 
+                  ? 'bg-indigo-50 text-indigo-700 shadow-sm' 
                   : 'text-slate-500 hover:bg-slate-100 hover:text-slate-800'
               }`}
             >
@@ -633,7 +633,7 @@ export default function App() {
                 onClick={() => setActiveTab('ai-insights')}
                 className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                   activeTab === 'ai-insights' 
-                    ? 'bg-indigo-600 text-slate-800 shadow-lg shadow-indigo-600/10' 
+                    ? 'bg-indigo-50 text-indigo-700 shadow-sm' 
                     : 'text-slate-500 hover:bg-slate-100 hover:text-slate-800'
                 }`}
               >
@@ -647,7 +647,7 @@ export default function App() {
         {/* Sidebar Footer User Details */}
         <div className="p-4 border-t border-slate-200">
           <div className="bg-white p-3.5 rounded-2xl flex items-center gap-3 mb-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-slate-800 font-bold text-sm">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
               <User className="w-4 h-4" />
             </div>
             <div className="overflow-hidden">
