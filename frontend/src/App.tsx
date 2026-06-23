@@ -766,10 +766,10 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Attendance and Leaves columns */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Attendance column */}
+              <div className="grid grid-cols-1 gap-8">
                 
-                {/* Left: Recent Activity Feed */}
+                {/* Recent Activity Feed */}
                 <div className="bg-white border border-slate-200 rounded-3xl p-6">
                   <h3 className="text-base font-bold text-slate-800 mb-5 flex items-center gap-2.5">
                     <Activity className="w-5 h-5 text-indigo-400" />
@@ -808,69 +808,7 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Right: Leaves Pending Approval (Manager / Admin view) or History (Employee view) */}
-                <div className="bg-white border border-slate-200 rounded-3xl p-6">
-                  <h3 className="text-base font-bold text-slate-800 mb-5 flex items-center gap-2.5">
-                    <Calendar className="w-5 h-5 text-indigo-400" />
-                    {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) ? 'Pending Leave Requests' : 'Your Leave Requests'}
-                  </h3>
-
-                  <div className="space-y-4">
-                    {leaves.filter(l => hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) ? l.status === 'PENDING' : l.employeeId === currentUserProfile?.id).slice(0, 4).map((leave) => {
-                      const emp = employees.find(e => e.id === leave.employeeId);
-                      return (
-                        <div key={leave.id} className="bg-white/60 border border-slate-200 p-4 rounded-2xl">
-                          <div className="flex items-start justify-between">
-                            <div>
-                              <span className="block font-semibold text-sm text-slate-800">
-                                {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) ? (emp ? emp.name : `Employee ${leave.employeeId}`) : leave.leaveType}
-                              </span>
-                              <span className="block text-xs text-slate-500 mt-1">
-                                {leave.startDate} to {leave.endDate}
-                              </span>
-                              <span className="block text-xs text-slate-500 italic mt-2">
-                                "{leave.reason}"
-                              </span>
-                            </div>
-                            
-                            {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) && leave.status === 'PENDING' ? (
-                              <div className="flex items-center gap-2">
-                                <button 
-                                  onClick={() => handleUpdateLeave(leave.id, 'APPROVED')}
-                                  className="p-1.5 bg-emerald-500/15 border border-emerald-500/30 hover:bg-emerald-500/25 rounded-lg text-emerald-400 transition-all"
-                                >
-                                  <Check className="w-4 h-4" />
-                                </button>
-                                <button 
-                                  onClick={() => handleUpdateLeave(leave.id, 'REJECTED')}
-                                  className="p-1.5 bg-red-500/15 border border-red-500/30 hover:bg-red-500/25 rounded-lg text-red-400 transition-all"
-                                >
-                                  <X className="w-4 h-4" />
-                                </button>
-                              </div>
-                            ) : (
-                              <span className={`px-2.5 py-1 rounded-full text-[10px] font-extrabold tracking-wide ${
-                                leave.status === 'APPROVED' 
-                                  ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
-                                  : leave.status === 'PENDING'
-                                  ? 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'
-                                  : 'bg-red-500/10 text-red-400 border border-red-500/20'
-                              }`}>
-                                {leave.status}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      );
-                    })}
-
-                    {leaves.filter(l => hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) ? l.status === 'PENDING' : l.employeeId === currentUserProfile?.id).length === 0 && (
-                      <div className="text-center py-8 text-xs text-slate-500 font-semibold">
-                        No active leave requests found.
-                      </div>
-                    )}
-                  </div>
-                </div>
+                
 
               </div>
 
@@ -1066,6 +1004,70 @@ export default function App() {
 
               {/* Right column: leaves history */}
               <div className="lg:col-span-2 space-y-6">
+                {/* Right: Leaves Pending Approval (Manager / Admin view) or History (Employee view) */}
+                <div className="bg-white border border-slate-200 rounded-3xl p-6">
+                  <h3 className="text-base font-bold text-slate-800 mb-5 flex items-center gap-2.5">
+                    <Calendar className="w-5 h-5 text-indigo-400" />
+                    {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) ? 'Pending Leave Requests' : 'Your Leave Requests'}
+                  </h3>
+
+                  <div className="space-y-4">
+                    {leaves.filter(l => hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) ? l.status === 'PENDING' : l.employeeId === currentUserProfile?.id).slice(0, 4).map((leave) => {
+                      const emp = employees.find(e => e.id === leave.employeeId);
+                      return (
+                        <div key={leave.id} className="bg-white/60 border border-slate-200 p-4 rounded-2xl">
+                          <div className="flex items-start justify-between">
+                            <div>
+                              <span className="block font-semibold text-sm text-slate-800">
+                                {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) ? (emp ? emp.name : `Employee ${leave.employeeId}`) : leave.leaveType}
+                              </span>
+                              <span className="block text-xs text-slate-500 mt-1">
+                                {leave.startDate} to {leave.endDate}
+                              </span>
+                              <span className="block text-xs text-slate-500 italic mt-2">
+                                "{leave.reason}"
+                              </span>
+                            </div>
+                            
+                            {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) && leave.status === 'PENDING' ? (
+                              <div className="flex items-center gap-2">
+                                <button 
+                                  onClick={() => handleUpdateLeave(leave.id, 'APPROVED')}
+                                  className="p-1.5 bg-emerald-500/15 border border-emerald-500/30 hover:bg-emerald-500/25 rounded-lg text-emerald-400 transition-all"
+                                >
+                                  <Check className="w-4 h-4" />
+                                </button>
+                                <button 
+                                  onClick={() => handleUpdateLeave(leave.id, 'REJECTED')}
+                                  className="p-1.5 bg-red-500/15 border border-red-500/30 hover:bg-red-500/25 rounded-lg text-red-400 transition-all"
+                                >
+                                  <X className="w-4 h-4" />
+                                </button>
+                              </div>
+                            ) : (
+                              <span className={`px-2.5 py-1 rounded-full text-[10px] font-extrabold tracking-wide ${
+                                leave.status === 'APPROVED' 
+                                  ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
+                                  : leave.status === 'PENDING'
+                                  ? 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'
+                                  : 'bg-red-500/10 text-red-400 border border-red-500/20'
+                              }`}>
+                                {leave.status}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+
+                    {leaves.filter(l => hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) ? l.status === 'PENDING' : l.employeeId === currentUserProfile?.id).length === 0 && (
+                      <div className="text-center py-8 text-xs text-slate-500 font-semibold">
+                        No active leave requests found.
+                      </div>
+                    )}
+                  </div>
+                </div>
+
                 <div className="bg-white border border-slate-200 rounded-3xl p-6">
                   <h3 className="text-base font-bold text-slate-800 mb-5 flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-indigo-400" />
