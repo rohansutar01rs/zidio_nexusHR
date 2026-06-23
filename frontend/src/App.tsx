@@ -471,7 +471,7 @@ export default function App() {
 
               <button 
                 type="submit" 
-                className="w-full py-3 bg-gradient-to-r from-[#4ce071] to-[#3fc05e] hover:from-[#3fc05e] hover:to-[#2da54c] text-white font-semibold rounded-xl shadow-lg shadow-green-500/20 transition-all active:scale-[0.98]"
+                className="w-full py-3 bg-gradient-to-r from-[#4ce071] to-[#3fc05e] hover:from-[#3fc05e] hover:to-[#2da54c] text-slate-800 font-semibold rounded-xl shadow-lg shadow-green-500/20 transition-all active:scale-[0.98]"
               >
                 Log In
               </button>
@@ -529,7 +529,7 @@ export default function App() {
 
               <button 
                 type="submit" 
-                className="w-full py-3 bg-gradient-to-r from-[#4ce071] to-[#3fc05e] hover:from-[#3fc05e] hover:to-[#2da54c] text-white font-semibold rounded-xl shadow-lg shadow-green-500/20 transition-all active:scale-[0.98]"
+                className="w-full py-3 bg-gradient-to-r from-[#4ce071] to-[#3fc05e] hover:from-[#3fc05e] hover:to-[#2da54c] text-slate-800 font-semibold rounded-xl shadow-lg shadow-green-500/20 transition-all active:scale-[0.98]"
               >
                 Sign Up Account
               </button>
@@ -560,18 +560,18 @@ export default function App() {
 
   // Active views content generators
   return (
-    <div className="min-h-screen flex bg-[#070A13]">
+    <div className="min-h-screen flex bg-slate-50">
       
       {/* SIDEBAR */}
-      <aside className="w-64 bg-slate-950/80 border-r border-slate-900 flex flex-col justify-between select-none">
+      <aside className="w-64 bg-white/90 border-r border-slate-200 flex flex-col justify-between select-none">
         <div>
           {/* Logo */}
-          <div className="p-6 flex items-center gap-3 border-b border-slate-900">
-            <div className="p-2 bg-indigo-600 rounded-xl text-white">
+          <div className="p-6 flex items-center gap-3 border-b border-slate-200">
+            <div className="p-2 bg-indigo-600 rounded-xl text-slate-800">
               <BrainCircuit className="w-6 h-6" />
             </div>
             <div>
-              <span className="block font-bold text-lg text-white leading-tight">NexusHR</span>
+              <span className="block font-bold text-lg text-slate-800 leading-tight">NexusHR</span>
               <span className="block text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Workforce Intel</span>
             </div>
           </div>
@@ -582,8 +582,8 @@ export default function App() {
               onClick={() => setActiveTab('dashboard')}
               className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === 'dashboard' 
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/10' 
-                  : 'text-slate-400 hover:bg-slate-900/60 hover:text-white'
+                  ? 'bg-indigo-600 text-slate-800 shadow-lg shadow-indigo-600/10' 
+                  : 'text-slate-500 hover:bg-slate-100 hover:text-slate-800'
               }`}
             >
               <Activity className="w-5 h-5" />
@@ -595,8 +595,8 @@ export default function App() {
                 onClick={() => setActiveTab('employees')}
                 className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                   activeTab === 'employees' 
-                    ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/10' 
-                    : 'text-slate-400 hover:bg-slate-900/60 hover:text-white'
+                    ? 'bg-indigo-600 text-slate-800 shadow-lg shadow-indigo-600/10' 
+                    : 'text-slate-500 hover:bg-slate-100 hover:text-slate-800'
                 }`}
               >
                 <Users className="w-5 h-5" />
@@ -608,8 +608,8 @@ export default function App() {
               onClick={() => setActiveTab('leaves')}
               className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === 'leaves' 
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/10' 
-                  : 'text-slate-400 hover:bg-slate-900/60 hover:text-white'
+                  ? 'bg-indigo-600 text-slate-800 shadow-lg shadow-indigo-600/10' 
+                  : 'text-slate-500 hover:bg-slate-100 hover:text-slate-800'
               }`}
             >
               <Calendar className="w-5 h-5" />
@@ -620,8 +620,8 @@ export default function App() {
               onClick={() => setActiveTab('payroll')}
               className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === 'payroll' 
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/10' 
-                  : 'text-slate-400 hover:bg-slate-900/60 hover:text-white'
+                  ? 'bg-indigo-600 text-slate-800 shadow-lg shadow-indigo-600/10' 
+                  : 'text-slate-500 hover:bg-slate-100 hover:text-slate-800'
               }`}
             >
               <DollarSign className="w-5 h-5" />
@@ -633,8 +633,8 @@ export default function App() {
                 onClick={() => setActiveTab('ai-insights')}
                 className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                   activeTab === 'ai-insights' 
-                    ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/10' 
-                    : 'text-slate-400 hover:bg-slate-900/60 hover:text-white'
+                    ? 'bg-indigo-600 text-slate-800 shadow-lg shadow-indigo-600/10' 
+                    : 'text-slate-500 hover:bg-slate-100 hover:text-slate-800'
                 }`}
               >
                 <BrainCircuit className="w-5 h-5 animate-pulse text-indigo-400" />
@@ -645,13 +645,13 @@ export default function App() {
         </div>
 
         {/* Sidebar Footer User Details */}
-        <div className="p-4 border-t border-slate-900">
-          <div className="bg-slate-900/40 p-3.5 rounded-2xl flex items-center gap-3 mb-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+        <div className="p-4 border-t border-slate-200">
+          <div className="bg-white p-3.5 rounded-2xl flex items-center gap-3 mb-3">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-slate-800 font-bold text-sm">
               <User className="w-4 h-4" />
             </div>
             <div className="overflow-hidden">
-              <span className="block font-semibold text-sm text-white truncate">{user.username}</span>
+              <span className="block font-semibold text-sm text-slate-800 truncate">{user.username}</span>
               <span className="block text-[10px] font-bold text-indigo-400 tracking-wider flex items-center gap-1">
                 <Shield className="w-3 h-3 inline" />
                 {user.roles[0].replace('ROLE_', '')}
@@ -660,7 +660,7 @@ export default function App() {
           </div>
           <button 
             onClick={handleLogout} 
-            className="w-full py-2.5 flex items-center justify-center gap-2 border border-slate-800/80 hover:bg-red-500/10 hover:border-red-500/20 hover:text-red-400 text-slate-400 font-semibold rounded-xl text-xs transition-all"
+            className="w-full py-2.5 flex items-center justify-center gap-2 border border-slate-200 hover:bg-red-500/10 hover:border-red-500/20 hover:text-red-400 text-slate-500 font-semibold rounded-xl text-xs transition-all"
           >
             <LogOut className="w-4 h-4" />
             Logout
@@ -672,9 +672,9 @@ export default function App() {
       <main className="flex-1 flex flex-col min-h-screen overflow-y-auto">
         
         {/* HEADER */}
-        <header className="px-8 py-5 border-b border-slate-900 bg-slate-950/20 flex items-center justify-between">
+        <header className="px-8 py-5 border-b border-slate-200 bg-white/20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-xl font-extrabold text-white capitalize tracking-tight">{activeTab.replace('-', ' ')}</span>
+            <span className="text-xl font-extrabold text-slate-800 capitalize tracking-tight">{activeTab.replace('-', ' ')}</span>
             {useMock && (
               <span className="px-2 py-0.5 bg-yellow-500/15 border border-yellow-500/30 text-yellow-300 text-[10px] font-bold rounded-full ml-3 tracking-wide">
                 DEMO OFFLINE MODE
@@ -685,9 +685,9 @@ export default function App() {
           {/* Biometric Simulation Widget (Employee Specific) */}
           {currentUserProfile && (
             <div className="flex items-center gap-4">
-              <div className="bg-slate-900/80 px-4 py-2 border border-slate-800 rounded-2xl flex items-center gap-3">
+              <div className="bg-slate-100 px-4 py-2 border border-slate-300 rounded-2xl flex items-center gap-3">
                 <Clock className="w-4 h-4 text-indigo-400" />
-                <span className="text-xs font-semibold text-slate-300">
+                <span className="text-xs font-semibold text-slate-600">
                   {isClockedIn ? `Checked In: ${clockInRecord ? new Date(clockInRecord.checkInTime || '').toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : 'Active'}` : 'Not clocked in today'}
                 </span>
                 <button 
@@ -714,36 +714,36 @@ export default function App() {
               
               {/* KPI Cards Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="bg-slate-900/40 border border-slate-900 rounded-3xl p-6 relative overflow-hidden">
+                <div className="bg-white border border-slate-200 rounded-3xl p-6 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl"></div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">Total Headcount</span>
+                    <span className="text-slate-500 text-xs font-bold uppercase tracking-wider">Total Headcount</span>
                     <div className="p-2 bg-blue-500/10 rounded-xl text-blue-400">
                       <Users className="w-5 h-5" />
                     </div>
                   </div>
-                  <span className="block text-4xl font-extrabold text-white">{employees.length}</span>
+                  <span className="block text-4xl font-extrabold text-slate-800">{employees.length}</span>
                   <span className="block text-[10px] text-slate-500 font-bold mt-2">Active corporate directories</span>
                 </div>
 
-                <div className="bg-slate-900/40 border border-slate-900 rounded-3xl p-6 relative overflow-hidden">
+                <div className="bg-white border border-slate-200 rounded-3xl p-6 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-2xl"></div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">Avg Engagement</span>
+                    <span className="text-slate-500 text-xs font-bold uppercase tracking-wider">Avg Engagement</span>
                     <div className="p-2 bg-purple-500/10 rounded-xl text-purple-400">
                       <BrainCircuit className="w-5 h-5" />
                     </div>
                   </div>
-                  <span className="block text-4xl font-extrabold text-white">
+                  <span className="block text-4xl font-extrabold text-slate-800">
                     {aiSummary ? `${aiSummary.averageEngagement}%` : '85%'}
                   </span>
                   <span className="block text-[10px] text-purple-400 font-bold mt-2">AI Workforce Happiness Index</span>
                 </div>
 
-                <div className="bg-slate-900/40 border border-slate-900 rounded-3xl p-6 relative overflow-hidden">
+                <div className="bg-white border border-slate-200 rounded-3xl p-6 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-24 h-24 bg-red-500/5 rounded-full blur-2xl"></div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">Flight Risk Alerts</span>
+                    <span className="text-slate-500 text-xs font-bold uppercase tracking-wider">Flight Risk Alerts</span>
                     <div className="p-2 bg-red-500/10 rounded-xl text-red-400">
                       <AlertTriangle className="w-5 h-5 animate-pulse" />
                     </div>
@@ -754,15 +754,15 @@ export default function App() {
                   <span className="block text-[10px] text-red-400 font-bold mt-2">Attrition risk level high</span>
                 </div>
 
-                <div className="bg-slate-900/40 border border-slate-900 rounded-3xl p-6 relative overflow-hidden">
+                <div className="bg-white border border-slate-200 rounded-3xl p-6 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-2xl"></div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-slate-400 text-xs font-bold uppercase tracking-wider">Active Leaves</span>
+                    <span className="text-slate-500 text-xs font-bold uppercase tracking-wider">Active Leaves</span>
                     <div className="p-2 bg-emerald-500/10 rounded-xl text-emerald-400">
                       <Calendar className="w-5 h-5" />
                     </div>
                   </div>
-                  <span className="block text-4xl font-extrabold text-white">
+                  <span className="block text-4xl font-extrabold text-slate-800">
                     {leaves.filter(l => l.status === 'APPROVED').length}
                   </span>
                   <span className="block text-[10px] text-slate-500 font-bold mt-2">Approved upcoming leaves</span>
@@ -773,8 +773,8 @@ export default function App() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 
                 {/* Left: Recent Activity Feed */}
-                <div className="bg-slate-900/30 border border-slate-900/80 rounded-3xl p-6">
-                  <h3 className="text-base font-bold text-white mb-5 flex items-center gap-2.5">
+                <div className="bg-white border border-slate-200 rounded-3xl p-6">
+                  <h3 className="text-base font-bold text-slate-800 mb-5 flex items-center gap-2.5">
                     <Activity className="w-5 h-5 text-indigo-400" />
                     Today's Attendance Status
                   </h3>
@@ -783,14 +783,14 @@ export default function App() {
                     {attendance.filter(a => a.date === new Date().toISOString().split('T')[0] || a.id <= 4).map((att) => {
                       const emp = employees.find(e => e.id === att.employeeId);
                       return (
-                        <div key={att.id} className="bg-slate-950/40 border border-slate-900/40 p-4 rounded-2xl flex items-center justify-between">
+                        <div key={att.id} className="bg-white/60 border border-slate-200 p-4 rounded-2xl flex items-center justify-between">
                           <div className="flex items-center gap-3">
-                            <div className="p-1.5 bg-slate-900 rounded-lg text-slate-400">
+                            <div className="p-1.5 bg-white rounded-lg text-slate-500">
                               <Briefcase className="w-4 h-4" />
                             </div>
                             <div>
-                              <span className="block font-semibold text-sm text-white">{emp ? emp.name : `Employee ID: ${att.employeeId}`}</span>
-                              <span className="block text-xs text-slate-400 mt-1">
+                              <span className="block font-semibold text-sm text-slate-800">{emp ? emp.name : `Employee ID: ${att.employeeId}`}</span>
+                              <span className="block text-xs text-slate-500 mt-1">
                                 {att.checkInTime ? `In: ${new Date(att.checkInTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}` : 'Absent'}
                                 {att.checkOutTime && ` | Out: ${new Date(att.checkOutTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`}
                               </span>
@@ -812,8 +812,8 @@ export default function App() {
                 </div>
 
                 {/* Right: Leaves Pending Approval (Manager / Admin view) or History (Employee view) */}
-                <div className="bg-slate-900/30 border border-slate-900/80 rounded-3xl p-6">
-                  <h3 className="text-base font-bold text-white mb-5 flex items-center gap-2.5">
+                <div className="bg-white border border-slate-200 rounded-3xl p-6">
+                  <h3 className="text-base font-bold text-slate-800 mb-5 flex items-center gap-2.5">
                     <Calendar className="w-5 h-5 text-indigo-400" />
                     {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) ? 'Pending Leave Requests' : 'Your Leave Requests'}
                   </h3>
@@ -822,13 +822,13 @@ export default function App() {
                     {leaves.filter(l => hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) ? l.status === 'PENDING' : l.employeeId === currentUserProfile?.id).slice(0, 4).map((leave) => {
                       const emp = employees.find(e => e.id === leave.employeeId);
                       return (
-                        <div key={leave.id} className="bg-slate-950/40 border border-slate-900/40 p-4 rounded-2xl">
+                        <div key={leave.id} className="bg-white/60 border border-slate-200 p-4 rounded-2xl">
                           <div className="flex items-start justify-between">
                             <div>
-                              <span className="block font-semibold text-sm text-white">
+                              <span className="block font-semibold text-sm text-slate-800">
                                 {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) ? (emp ? emp.name : `Employee ${leave.employeeId}`) : leave.leaveType}
                               </span>
-                              <span className="block text-xs text-slate-400 mt-1">
+                              <span className="block text-xs text-slate-500 mt-1">
                                 {leave.startDate} to {leave.endDate}
                               </span>
                               <span className="block text-xs text-slate-500 italic mt-2">
@@ -893,13 +893,13 @@ export default function App() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Search by name, title, department..."
-                    className="w-full pl-12 pr-4 py-3 bg-slate-900/40 border border-slate-800 rounded-2xl text-white focus:outline-none focus:border-indigo-500 text-sm transition-all"
+                    className="w-full pl-12 pr-4 py-3 bg-white border border-slate-300 rounded-2xl text-slate-800 focus:outline-none focus:border-indigo-500 text-sm transition-all"
                   />
                 </div>
                 {hasRole(['ROLE_ADMIN']) && (
                   <button 
                     onClick={() => setShowAddEmpModal(true)}
-                    className="py-3 px-5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl font-semibold flex items-center gap-2 text-sm shadow-lg shadow-indigo-600/10 transition-all"
+                    className="py-3 px-5 bg-indigo-600 hover:bg-indigo-500 text-slate-800 rounded-2xl font-semibold flex items-center gap-2 text-sm shadow-lg shadow-indigo-600/10 transition-all"
                   >
                     <Plus className="w-5 h-5" />
                     Register Employee
@@ -908,18 +908,18 @@ export default function App() {
               </div>
 
               {/* Employees List Grid */}
-              <div className="bg-slate-900/20 border border-slate-900 rounded-3xl overflow-hidden">
+              <div className="bg-white/20 border border-slate-200 rounded-3xl overflow-hidden">
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse">
                     <thead>
-                      <tr className="border-b border-slate-900/80 bg-slate-950/35">
-                        <th className="px-6 py-4.5 text-xs font-bold text-slate-400 uppercase tracking-wider">Employee Name</th>
-                        <th className="px-6 py-4.5 text-xs font-bold text-slate-400 uppercase tracking-wider">Job Title</th>
-                        <th className="px-6 py-4.5 text-xs font-bold text-slate-400 uppercase tracking-wider">Department</th>
-                        <th className="px-6 py-4.5 text-xs font-bold text-slate-400 uppercase tracking-wider">Skills</th>
-                        <th className="px-6 py-4.5 text-xs font-bold text-slate-400 uppercase tracking-wider">Perf Rating</th>
-                        <th className="px-6 py-4.5 text-xs font-bold text-slate-400 uppercase tracking-wider">Flight Risk</th>
-                        <th className="px-6 py-4.5 text-xs font-bold text-slate-400 uppercase tracking-wider text-right">Actions</th>
+                      <tr className="border-b border-slate-200 bg-white/35">
+                        <th className="px-6 py-4.5 text-xs font-bold text-slate-500 uppercase tracking-wider">Employee Name</th>
+                        <th className="px-6 py-4.5 text-xs font-bold text-slate-500 uppercase tracking-wider">Job Title</th>
+                        <th className="px-6 py-4.5 text-xs font-bold text-slate-500 uppercase tracking-wider">Department</th>
+                        <th className="px-6 py-4.5 text-xs font-bold text-slate-500 uppercase tracking-wider">Skills</th>
+                        <th className="px-6 py-4.5 text-xs font-bold text-slate-500 uppercase tracking-wider">Perf Rating</th>
+                        <th className="px-6 py-4.5 text-xs font-bold text-slate-500 uppercase tracking-wider">Flight Risk</th>
+                        <th className="px-6 py-4.5 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Actions</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-900/40">
@@ -929,16 +929,16 @@ export default function App() {
                       ).map(emp => {
                         const dept = departments.find(d => d.id === emp.departmentId);
                         return (
-                          <tr key={emp.id} className="hover:bg-slate-900/20 transition-colors">
+                          <tr key={emp.id} className="hover:bg-white/20 transition-colors">
                             <td className="px-6 py-4.5">
-                              <span className="block font-semibold text-sm text-white">{emp.name}</span>
+                              <span className="block font-semibold text-sm text-slate-800">{emp.name}</span>
                               <span className="block text-xs text-slate-500 mt-0.5">{emp.email}</span>
                             </td>
                             <td className="px-6 py-4.5">
-                              <span className="text-sm text-slate-300 font-medium">{emp.jobTitle}</span>
+                              <span className="text-sm text-slate-600 font-medium">{emp.jobTitle}</span>
                             </td>
                             <td className="px-6 py-4.5">
-                              <span className="text-sm text-slate-400 font-medium">{dept ? dept.name : 'Engineering'}</span>
+                              <span className="text-sm text-slate-500 font-medium">{dept ? dept.name : 'Engineering'}</span>
                             </td>
                             <td className="px-6 py-4.5">
                               <span className="text-xs text-slate-500 truncate max-w-[200px] block font-medium">
@@ -1003,19 +1003,19 @@ export default function App() {
               
               {/* Left column: apply leave form (Only for Employee profiles) */}
               <div className="lg:col-span-1">
-                <div className="bg-slate-900/40 border border-slate-900 rounded-3xl p-6 space-y-4">
-                  <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <div className="bg-white border border-slate-200 rounded-3xl p-6 space-y-4">
+                  <h3 className="text-base font-bold text-slate-800 flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-indigo-400" />
                     Request Leave
                   </h3>
 
                   <form onSubmit={handleApplyLeave} className="space-y-4">
                     <div>
-                      <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Leave Type</label>
+                      <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Leave Type</label>
                       <select 
                         value={leaveType}
                         onChange={(e) => setLeaveType(e.target.value)}
-                        className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500 text-sm"
+                        className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none focus:border-indigo-500 text-sm"
                       >
                         <option value="ANNUAL">Annual Leave</option>
                         <option value="SICK">Sick Leave</option>
@@ -1024,33 +1024,33 @@ export default function App() {
                     </div>
 
                     <div>
-                      <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Start Date</label>
+                      <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Start Date</label>
                       <input 
                         type="date"
                         value={leaveStart}
                         onChange={(e) => setLeaveStart(e.target.value)}
-                        className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500 text-sm"
+                        className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none focus:border-indigo-500 text-sm"
                         required
                       />
                     </div>
 
                     <div>
-                      <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">End Date</label>
+                      <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">End Date</label>
                       <input 
                         type="date"
                         value={leaveEnd}
                         onChange={(e) => setLeaveEnd(e.target.value)}
-                        className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500 text-sm"
+                        className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none focus:border-indigo-500 text-sm"
                         required
                       />
                     </div>
 
                     <div>
-                      <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Reason</label>
+                      <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Reason</label>
                       <textarea 
                         value={leaveReason}
                         onChange={(e) => setLeaveReason(e.target.value)}
-                        className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500 text-sm"
+                        className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none focus:border-indigo-500 text-sm"
                         placeholder="Reason for leave request..."
                         rows={3}
                         required
@@ -1059,7 +1059,7 @@ export default function App() {
 
                     <button 
                       type="submit"
-                      className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-sm transition-all"
+                      className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-slate-800 font-semibold rounded-xl text-sm transition-all"
                     >
                       Apply Leave
                     </button>
@@ -1069,8 +1069,8 @@ export default function App() {
 
               {/* Right column: leaves history */}
               <div className="lg:col-span-2 space-y-6">
-                <div className="bg-slate-900/40 border border-slate-900 rounded-3xl p-6">
-                  <h3 className="text-base font-bold text-white mb-5 flex items-center gap-2">
+                <div className="bg-white border border-slate-200 rounded-3xl p-6">
+                  <h3 className="text-base font-bold text-slate-800 mb-5 flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-indigo-400" />
                     Leave Tracking Records
                   </h3>
@@ -1078,13 +1078,13 @@ export default function App() {
                   <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                       <thead>
-                        <tr className="border-b border-slate-900">
-                          <th className="py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Employee</th>
-                          <th className="py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Leave Type</th>
-                          <th className="py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Duration</th>
-                          <th className="py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Reason</th>
-                          <th className="py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Status</th>
-                          {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) && <th className="py-3 text-xs font-bold text-slate-400 uppercase tracking-wider text-right">Actions</th>}
+                        <tr className="border-b border-slate-200">
+                          <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Employee</th>
+                          <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Leave Type</th>
+                          <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Duration</th>
+                          <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Reason</th>
+                          <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
+                          {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) && <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Actions</th>}
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-slate-900/60">
@@ -1092,14 +1092,14 @@ export default function App() {
                           const emp = employees.find(e => e.id === l.employeeId);
                           return (
                             <tr key={l.id}>
-                              <td className="py-4.5 text-sm font-semibold text-white">
+                              <td className="py-4.5 text-sm font-semibold text-slate-800">
                                 {emp ? emp.name : `ID: ${l.employeeId}`}
                               </td>
-                              <td className="py-4.5 text-sm text-slate-300 font-medium">{l.leaveType}</td>
-                              <td className="py-4.5 text-sm text-slate-400 font-medium">
+                              <td className="py-4.5 text-sm text-slate-600 font-medium">{l.leaveType}</td>
+                              <td className="py-4.5 text-sm text-slate-500 font-medium">
                                 {l.startDate} to {l.endDate}
                               </td>
-                              <td className="py-4.5 text-xs text-slate-400 max-w-[150px] truncate">{l.reason}</td>
+                              <td className="py-4.5 text-xs text-slate-500 max-w-[150px] truncate">{l.reason}</td>
                               <td className="py-4.5">
                                 <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold tracking-wide ${
                                   l.status === 'APPROVED' 
@@ -1149,14 +1149,14 @@ export default function App() {
               
               {/* Admin configuration bar */}
               {hasRole(['ROLE_ADMIN']) && (
-                <div className="bg-slate-900/40 border border-slate-900 rounded-3xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="bg-white border border-slate-200 rounded-3xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
                   <div className="flex items-center gap-3">
-                    <div className="p-3 bg-slate-950 rounded-2xl text-slate-400">
+                    <div className="p-3 bg-white rounded-2xl text-slate-500">
                       <Sliders className="w-6 h-6" />
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-white">Execute Monthly Payroll Run</h3>
-                      <p className="text-slate-400 text-xs mt-1">Process salary calculation, taxes, and automatically output digital payslips.</p>
+                      <h3 className="text-base font-bold text-slate-800">Execute Monthly Payroll Run</h3>
+                      <p className="text-slate-500 text-xs mt-1">Process salary calculation, taxes, and automatically output digital payslips.</p>
                     </div>
                   </div>
                   
@@ -1165,11 +1165,11 @@ export default function App() {
                       type="text"
                       value={payrollPeriod}
                       onChange={(e) => setPayrollPeriod(e.target.value)}
-                      className="px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none text-sm w-36"
+                      className="px-4 py-2.5 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none text-sm w-36"
                     />
                     <button 
                       onClick={handleRunPayroll}
-                      className="py-2.5 px-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl font-bold text-sm shadow-lg shadow-indigo-600/10 transition-all"
+                      className="py-2.5 px-5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-slate-800 rounded-xl font-bold text-sm shadow-lg shadow-indigo-600/10 transition-all"
                     >
                       Run Corporate Payroll
                     </button>
@@ -1178,8 +1178,8 @@ export default function App() {
               )}
 
               {/* Payslip lists */}
-              <div className="bg-slate-900/40 border border-slate-900 rounded-3xl p-6">
-                <h3 className="text-base font-bold text-white mb-5 flex items-center gap-2">
+              <div className="bg-white border border-slate-200 rounded-3xl p-6">
+                <h3 className="text-base font-bold text-slate-800 mb-5 flex items-center gap-2">
                   <DollarSign className="w-5 h-5 text-indigo-400" />
                   Processed Payslip Archive
                 </h3>
@@ -1187,15 +1187,15 @@ export default function App() {
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse">
                     <thead>
-                      <tr className="border-b border-slate-900">
-                        <th className="py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Employee Name</th>
-                        <th className="py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Pay Period</th>
-                        <th className="py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Gross Pay</th>
-                        <th className="py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Deductions</th>
-                        <th className="py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Tax Paid</th>
-                        <th className="py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Net Salary</th>
-                        <th className="py-3 text-xs font-bold text-slate-400 uppercase tracking-wider">Status</th>
-                        <th className="py-3 text-xs font-bold text-slate-400 uppercase tracking-wider text-right">Invoice</th>
+                      <tr className="border-b border-slate-200">
+                        <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Employee Name</th>
+                        <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Pay Period</th>
+                        <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Gross Pay</th>
+                        <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Deductions</th>
+                        <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Tax Paid</th>
+                        <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Net Salary</th>
+                        <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
+                        <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Invoice</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-900/60">
@@ -1204,13 +1204,13 @@ export default function App() {
                         const gross = payslip.baseSalary + payslip.allowances;
                         return (
                           <tr key={payslip.id}>
-                            <td className="py-4 text-sm font-semibold text-white">
+                            <td className="py-4 text-sm font-semibold text-slate-800">
                               {emp ? emp.name : `Employee ID: ${payslip.employeeId}`}
                             </td>
-                            <td className="py-4 text-sm text-slate-300 font-medium">{payslip.payPeriod}</td>
-                            <td className="py-4 text-sm text-slate-300 font-medium">${gross.toFixed(2)}</td>
-                            <td className="py-4 text-sm text-slate-400 font-medium">${payslip.deductions.toFixed(2)}</td>
-                            <td className="py-4 text-sm text-slate-400 font-medium">${payslip.tax.toFixed(2)}</td>
+                            <td className="py-4 text-sm text-slate-600 font-medium">{payslip.payPeriod}</td>
+                            <td className="py-4 text-sm text-slate-600 font-medium">${gross.toFixed(2)}</td>
+                            <td className="py-4 text-sm text-slate-500 font-medium">${payslip.deductions.toFixed(2)}</td>
+                            <td className="py-4 text-sm text-slate-500 font-medium">${payslip.tax.toFixed(2)}</td>
                             <td className="py-4 text-sm text-indigo-400 font-semibold">${payslip.netSalary.toFixed(2)}</td>
                             <td className="py-4">
                               <span className="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-extrabold tracking-wide rounded-full">
@@ -1220,7 +1220,7 @@ export default function App() {
                             <td className="py-4 text-right">
                               <button 
                                 onClick={() => setShowPayslipModal(payslip)}
-                                className="p-1.5 bg-slate-950 border border-slate-800 hover:border-slate-700 hover:text-white rounded-lg text-slate-400 transition-all inline-flex items-center gap-1.5 text-xs font-semibold"
+                                className="p-1.5 bg-white border border-slate-300 hover:border-slate-700 hover:text-slate-800 rounded-lg text-slate-500 transition-all inline-flex items-center gap-1.5 text-xs font-semibold"
                               >
                                 <Download className="w-3.5 h-3.5" />
                                 View
@@ -1244,8 +1244,8 @@ export default function App() {
               {/* Global AI workforce analytics widgets */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* 1. Attrition Risk distribution */}
-                <div className="bg-slate-900/40 border border-slate-900 rounded-3xl p-6">
-                  <span className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-4">Workforce Risk Distribution</span>
+                <div className="bg-white border border-slate-200 rounded-3xl p-6">
+                  <span className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-4">Workforce Risk Distribution</span>
                   <div className="h-48">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={attritionData}>
@@ -1263,8 +1263,8 @@ export default function App() {
                 </div>
 
                 {/* 2. Engagement trends */}
-                <div className="bg-slate-900/40 border border-slate-900 rounded-3xl p-6">
-                  <span className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-4">Engagement Index Trend</span>
+                <div className="bg-white border border-slate-200 rounded-3xl p-6">
+                  <span className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-4">Engagement Index Trend</span>
                   <div className="h-48">
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={trendData}>
@@ -1282,8 +1282,8 @@ export default function App() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 
                 {/* Left Employee List Selector */}
-                <div className="lg:col-span-1 bg-slate-900/40 border border-slate-900 rounded-3xl p-6">
-                  <h3 className="text-base font-bold text-white mb-4 flex items-center gap-2">
+                <div className="lg:col-span-1 bg-white border border-slate-200 rounded-3xl p-6">
+                  <h3 className="text-base font-bold text-slate-800 mb-4 flex items-center gap-2">
                     <Users className="w-5 h-5 text-indigo-400" />
                     Select Employee for AI Audit
                   </h3>
@@ -1295,12 +1295,12 @@ export default function App() {
                         className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between transition-all ${
                           activeEmployeeAi?.employeeName === emp.name
                             ? 'bg-indigo-600/10 border-indigo-600'
-                            : 'bg-slate-950/40 border-slate-900 hover:border-slate-800'
+                            : 'bg-white/60 border-slate-200 hover:border-slate-300'
                         }`}
                       >
                         <div className="flex items-center gap-2">
-                          <span className="block font-semibold text-sm text-white">{emp.name}</span>
-                          <span className="block text-[10px] text-slate-400 font-medium mt-0.5">{emp.jobTitle}</span>
+                          <span className="block font-semibold text-sm text-slate-800">{emp.name}</span>
+                          <span className="block text-[10px] text-slate-500 font-medium mt-0.5">{emp.jobTitle}</span>
                         </div>
                         <ChevronRight className="w-4 h-4 text-slate-500" />
                       </button>
@@ -1309,13 +1309,13 @@ export default function App() {
                 </div>
 
                 {/* Right: Detailed AI Audit Panel */}
-                <div className="lg:col-span-2 bg-slate-900/40 border border-slate-900 rounded-3xl p-6">
+                <div className="lg:col-span-2 bg-white border border-slate-200 rounded-3xl p-6">
                   {activeEmployeeAi ? (
                     <div className="space-y-6">
-                      <div className="flex items-center justify-between border-b border-slate-900 pb-4">
+                      <div className="flex items-center justify-between border-b border-slate-200 pb-4">
                         <div>
-                          <h3 className="text-lg font-bold text-white">{activeEmployeeAi.employeeName}</h3>
-                          <span className="text-xs text-slate-400 font-medium">{activeEmployeeAi.jobTitle} AI Workforce Profile</span>
+                          <h3 className="text-lg font-bold text-slate-800">{activeEmployeeAi.employeeName}</h3>
+                          <span className="text-xs text-slate-500 font-medium">{activeEmployeeAi.jobTitle} AI Workforce Profile</span>
                         </div>
                         <div className="bg-indigo-500/10 px-3.5 py-1.5 border border-indigo-500/20 rounded-2xl flex items-center gap-2">
                           <Activity className="w-4 h-4 text-indigo-400" />
@@ -1327,8 +1327,8 @@ export default function App() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         
                         {/* Flight Risk Alert */}
-                        <div className="bg-slate-950/40 border border-slate-900/60 p-5 rounded-2xl relative overflow-hidden">
-                          <span className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-3">Attrition Risk Evaluation</span>
+                        <div className="bg-white/60 border border-slate-200/60 p-5 rounded-2xl relative overflow-hidden">
+                          <span className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-3">Attrition Risk Evaluation</span>
                           <div className="flex items-baseline gap-2">
                             <span className={`text-3xl font-black ${
                               activeEmployeeAi.attrition.riskLevel === 'HIGH' ? 'text-red-400' : 'text-emerald-400'
@@ -1340,7 +1340,7 @@ export default function App() {
                           <div className="mt-4 space-y-1">
                             <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Identified Risk Drivers</span>
                             {activeEmployeeAi.attrition.drivers.map((driver: string, idx: number) => (
-                              <span key={idx} className="text-xs text-slate-300 flex items-center gap-2">
+                              <span key={idx} className="text-xs text-slate-600 flex items-center gap-2">
                                 <span className="w-1 h-1 bg-red-400 rounded-full"></span>
                                 {driver}
                               </span>
@@ -1349,10 +1349,10 @@ export default function App() {
                         </div>
 
                         {/* Engagement Index */}
-                        <div className="bg-slate-950/40 border border-slate-900/60 p-5 rounded-2xl">
-                          <span className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-3">Workforce Engagement Index</span>
+                        <div className="bg-white/60 border border-slate-200/60 p-5 rounded-2xl">
+                          <span className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-3">Workforce Engagement Index</span>
                           <span className="text-3xl font-black text-indigo-400">{activeEmployeeAi.engagementScore}%</span>
-                          <div className="w-full bg-slate-900 rounded-full h-1.5 mt-3">
+                          <div className="w-full bg-white rounded-full h-1.5 mt-3">
                             <div className="bg-indigo-500 h-1.5 rounded-full" style={{ width: `${activeEmployeeAi.engagementScore}%` }}></div>
                           </div>
                           <span className="block text-[10px] text-slate-500 mt-2 font-medium">Derived from system attendance, performance history & leaves</span>
@@ -1361,8 +1361,8 @@ export default function App() {
                       </div>
 
                       {/* Skill Gaps Analysis */}
-                      <div className="bg-slate-950/20 border border-slate-900 p-5 rounded-2xl space-y-4">
-                        <span className="block text-slate-300 text-xs font-bold uppercase tracking-wider">Roles Competency & Skill Gap Analysis</span>
+                      <div className="bg-white/20 border border-slate-200 p-5 rounded-2xl space-y-4">
+                        <span className="block text-slate-600 text-xs font-bold uppercase tracking-wider">Roles Competency & Skill Gap Analysis</span>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div className="space-y-4">
@@ -1370,7 +1370,7 @@ export default function App() {
                               <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">Current Skills</span>
                               <div className="flex flex-wrap gap-1.5">
                                 {activeEmployeeAi.skills.current.map((skill: string, idx: number) => (
-                                  <span key={idx} className="px-2.5 py-1 bg-slate-900/60 border border-slate-800 rounded-lg text-xs font-medium text-slate-300">{skill}</span>
+                                  <span key={idx} className="px-2.5 py-1 bg-slate-100 border border-slate-300 rounded-lg text-xs font-medium text-slate-600">{skill}</span>
                                 ))}
                               </div>
                             </div>
@@ -1386,7 +1386,7 @@ export default function App() {
                           </div>
 
                           {/* Skills gap Radar chart */}
-                          <div className="h-60 mt-4 bg-slate-950/20 rounded-2xl p-2 border border-slate-900">
+                          <div className="h-60 mt-4 bg-white/20 rounded-2xl p-2 border border-slate-200">
                             <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2 text-center">Competency Radar Matrix</span>
                             <ResponsiveContainer width="100%" height="80%">
                               <RadarChart cx="50%" cy="50%" outerRadius="80%" data={
@@ -1412,12 +1412,12 @@ export default function App() {
 
                         </div>
 
-                        <div className="border-t border-slate-900/80 pt-4">
+                        <div className="border-t border-slate-200 pt-4">
                           <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">AI Recommendation Action</span>
                           <p className="text-xs text-indigo-300 leading-relaxed font-semibold">
                             {activeEmployeeAi.attrition.recommendation}
                           </p>
-                          <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                          <p className="text-xs text-slate-500 mt-2 leading-relaxed">
                             {activeEmployeeAi.skills.trainingRecommendation}
                           </p>
                         </div>
@@ -1443,56 +1443,56 @@ export default function App() {
 
       {/* MODAL: REGISTER EMPLOYEE */}
       {showAddEmpModal && (
-        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-900 border border-slate-800 max-w-md w-full rounded-3xl p-6 relative overflow-hidden shadow-2xl space-y-4">
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
+        <div className="fixed inset-0 bg-white/90 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white border border-slate-300 max-w-md w-full rounded-3xl p-6 relative overflow-hidden shadow-2xl space-y-4">
+            <h3 className="text-base font-bold text-slate-800 flex items-center gap-2">
               <Users className="w-5 h-5 text-indigo-400" />
               Register New Employee
             </h3>
 
             <form onSubmit={handleCreateEmployee} className="space-y-4">
               <div>
-                <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Full Name</label>
+                <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Full Name</label>
                 <input 
                   type="text"
                   value={newEmpName}
                   onChange={(e) => setNewEmpName(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500 text-sm"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none focus:border-indigo-500 text-sm"
                   placeholder="Enter employee name..."
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Corporate Email</label>
+                <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Corporate Email</label>
                 <input 
                   type="email"
                   value={newEmpEmail}
                   onChange={(e) => setNewEmpEmail(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500 text-sm"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none focus:border-indigo-500 text-sm"
                   placeholder="name@nexushr.com"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Job Title</label>
+                <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Job Title</label>
                 <input 
                   type="text"
                   value={newEmpTitle}
                   onChange={(e) => setNewEmpTitle(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500 text-sm"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none focus:border-indigo-500 text-sm"
                   placeholder="Software Engineer"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Department</label>
+                <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Department</label>
                 <select 
                   value={newEmpDept}
                   onChange={(e) => setNewEmpDept(parseInt(e.target.value))}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none"
                 >
                   {departments.map(d => (
                     <option key={d.id} value={d.id}>{d.name}</option>
@@ -1501,12 +1501,12 @@ export default function App() {
               </div>
 
               <div>
-                <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Skills (Comma-separated)</label>
+                <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Skills (Comma-separated)</label>
                 <input 
                   type="text"
                   value={newEmpSkills}
                   onChange={(e) => setNewEmpSkills(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none"
                   placeholder="Java, React, SQL..."
                 />
               </div>
@@ -1515,13 +1515,13 @@ export default function App() {
                 <button 
                   type="button"
                   onClick={() => setShowAddEmpModal(false)}
-                  className="flex-1 py-3 bg-slate-950 border border-slate-800 text-slate-400 font-semibold rounded-xl text-sm transition-all hover:bg-slate-800"
+                  className="flex-1 py-3 bg-white border border-slate-300 text-slate-500 font-semibold rounded-xl text-sm transition-all hover:bg-slate-200"
                 >
                   Cancel
                 </button>
                 <button 
                   type="submit"
-                  className="flex-1 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-sm transition-all shadow-lg shadow-indigo-600/10"
+                  className="flex-1 py-3 bg-indigo-600 hover:bg-indigo-500 text-slate-800 font-semibold rounded-xl text-sm transition-all shadow-lg shadow-indigo-600/10"
                 >
                   Save Profile
                 </button>
@@ -1533,57 +1533,57 @@ export default function App() {
 
       {/* MODAL: VIEW / DOWNLOAD PAYSLIP */}
       {showPayslipModal && (
-        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-900 border border-slate-800 max-w-lg w-full rounded-3xl p-8 relative overflow-hidden shadow-2xl space-y-6">
+        <div className="fixed inset-0 bg-white/90 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white border border-slate-300 max-w-lg w-full rounded-3xl p-8 relative overflow-hidden shadow-2xl space-y-6">
             
             {/* Header info */}
-            <div className="text-center border-b border-slate-800 pb-5">
+            <div className="text-center border-b border-slate-300 pb-5">
               <div className="inline-flex items-center gap-2 text-indigo-400 mb-2">
                 <BrainCircuit className="w-5 h-5" />
                 <span className="font-bold text-sm tracking-wide uppercase">NexusHR System</span>
               </div>
-              <h2 className="text-xl font-extrabold text-white">Salary Invoice / Payslip</h2>
+              <h2 className="text-xl font-extrabold text-slate-800">Salary Invoice / Payslip</h2>
               <span className="text-xs text-slate-500 mt-1 block">Pay Period: {showPayslipModal.payPeriod}</span>
             </div>
 
             {/* Payslip body layout */}
             <div className="space-y-4">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-slate-400 font-medium">Employee Reference ID</span>
-                <span className="text-white font-bold">EMP-00{showPayslipModal.employeeId}</span>
+                <span className="text-slate-500 font-medium">Employee Reference ID</span>
+                <span className="text-slate-800 font-bold">EMP-00{showPayslipModal.employeeId}</span>
               </div>
 
-              <div className="border-t border-slate-800/80 pt-4 space-y-3">
+              <div className="border-t border-slate-200 pt-4 space-y-3">
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-slate-500 font-bold uppercase tracking-wider">Earnings</span>
                   <span className="text-slate-500 font-bold uppercase tracking-wider">Amount</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-300 font-medium">Base Salary</span>
-                  <span className="text-white font-semibold">${showPayslipModal.baseSalary.toFixed(2)}</span>
+                  <span className="text-slate-600 font-medium">Base Salary</span>
+                  <span className="text-slate-800 font-semibold">${showPayslipModal.baseSalary.toFixed(2)}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-300 font-medium">Allowances</span>
-                  <span className="text-white font-semibold">${showPayslipModal.allowances.toFixed(2)}</span>
+                  <span className="text-slate-600 font-medium">Allowances</span>
+                  <span className="text-slate-800 font-semibold">${showPayslipModal.allowances.toFixed(2)}</span>
                 </div>
               </div>
 
-              <div className="border-t border-slate-800/80 pt-4 space-y-3">
+              <div className="border-t border-slate-200 pt-4 space-y-3">
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-slate-500 font-bold uppercase tracking-wider">Deductions & Tax</span>
                   <span className="text-slate-500 font-bold uppercase tracking-wider">Amount</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-300 font-medium">Company Deductions</span>
-                  <span className="text-white font-semibold">-${showPayslipModal.deductions.toFixed(2)}</span>
+                  <span className="text-slate-600 font-medium">Company Deductions</span>
+                  <span className="text-slate-800 font-semibold">-${showPayslipModal.deductions.toFixed(2)}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-300 font-medium">Income Tax</span>
-                  <span className="text-white font-semibold">-${showPayslipModal.tax.toFixed(2)}</span>
+                  <span className="text-slate-600 font-medium">Income Tax</span>
+                  <span className="text-slate-800 font-semibold">-${showPayslipModal.tax.toFixed(2)}</span>
                 </div>
               </div>
 
-              <div className="border-t border-slate-800 pt-4 flex items-center justify-between bg-indigo-500/5 p-4 rounded-2xl border border-indigo-500/10">
+              <div className="border-t border-slate-300 pt-4 flex items-center justify-between bg-indigo-500/5 p-4 rounded-2xl border border-indigo-500/10">
                 <span className="text-indigo-300 text-sm font-bold">Net Disbursed Pay</span>
                 <span className="text-indigo-400 text-xl font-extrabold">${showPayslipModal.netSalary.toFixed(2)}</span>
               </div>
@@ -1592,13 +1592,13 @@ export default function App() {
             <div className="flex items-center gap-3">
               <button 
                 onClick={() => window.print()}
-                className="flex-1 py-3 bg-slate-950 border border-slate-800 text-slate-300 font-semibold rounded-xl text-xs transition-all hover:bg-slate-800"
+                className="flex-1 py-3 bg-white border border-slate-300 text-slate-600 font-semibold rounded-xl text-xs transition-all hover:bg-slate-200"
               >
                 Print Invoice
               </button>
               <button 
                 onClick={() => setShowPayslipModal(null)}
-                className="flex-1 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-xs transition-all shadow-lg"
+                className="flex-1 py-3 bg-indigo-600 hover:bg-indigo-500 text-slate-800 font-semibold rounded-xl text-xs transition-all shadow-lg"
               >
                 Close Payslip
               </button>
@@ -1609,16 +1609,16 @@ export default function App() {
 
       {/* MODAL: SUBMIT PERFORMANCE REVIEW */}
       {selectedEmpForReview && (
-        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-900 border border-slate-800 max-w-md w-full rounded-3xl p-6 relative overflow-hidden shadow-2xl space-y-4">
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
+        <div className="fixed inset-0 bg-white/90 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white border border-slate-300 max-w-md w-full rounded-3xl p-6 relative overflow-hidden shadow-2xl space-y-4">
+            <h3 className="text-base font-bold text-slate-800 flex items-center gap-2">
               <Award className="w-5 h-5 text-indigo-400" />
               Submit Performance Review
             </h3>
 
             <form onSubmit={handleSubmitPerformanceReview} className="space-y-4">
               <div>
-                <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Performance Rating (1.0 - 5.0)</label>
+                <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Performance Rating (1.0 - 5.0)</label>
                 <input 
                   type="number"
                   step="0.1"
@@ -1626,17 +1626,17 @@ export default function App() {
                   max="5.0"
                   value={reviewRating}
                   onChange={(e) => setReviewRating(parseFloat(e.target.value))}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Key Goals Achieved</label>
+                <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Key Goals Achieved</label>
                 <textarea
                   value={reviewGoals}
                   onChange={(e) => setReviewGoals(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none"
                   placeholder="Detail primary goals completed..."
                   rows={2}
                   required
@@ -1644,11 +1644,11 @@ export default function App() {
               </div>
 
               <div>
-                <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Detailed Manager Feedback</label>
+                <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Detailed Manager Feedback</label>
                 <textarea
                   value={reviewFeedback}
                   onChange={(e) => setReviewFeedback(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none"
                   placeholder="Enter manager audit comments..."
                   rows={3}
                   required
@@ -1659,13 +1659,13 @@ export default function App() {
                 <button 
                   type="button"
                   onClick={() => setSelectedEmpForReview(null)}
-                  className="flex-1 py-3 bg-slate-950 border border-slate-800 text-slate-400 font-semibold rounded-xl text-xs hover:bg-slate-800"
+                  className="flex-1 py-3 bg-white border border-slate-300 text-slate-500 font-semibold rounded-xl text-xs hover:bg-slate-200"
                 >
                   Cancel
                 </button>
                 <button 
                   type="submit"
-                  className="flex-1 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-xs shadow-lg"
+                  className="flex-1 py-3 bg-indigo-600 hover:bg-indigo-500 text-slate-800 font-semibold rounded-xl text-xs shadow-lg"
                 >
                   Submit Performance Audit
                 </button>
@@ -1677,49 +1677,49 @@ export default function App() {
 
       {/* MODAL: CONFIGURE SALARY */}
       {selectedEmpForSalary && (
-        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-900 border border-slate-800 max-w-md w-full rounded-3xl p-6 relative overflow-hidden shadow-2xl space-y-4">
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
+        <div className="fixed inset-0 bg-white/90 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white border border-slate-300 max-w-md w-full rounded-3xl p-6 relative overflow-hidden shadow-2xl space-y-4">
+            <h3 className="text-base font-bold text-slate-800 flex items-center gap-2">
               <DollarSign className="w-5 h-5 text-indigo-400" />
               Configure Salary Plan
             </h3>
 
             <form onSubmit={handleUpdateSalaryConfig} className="space-y-4">
               <div>
-                <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Base Salary ($)</label>
+                <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Base Salary ($)</label>
                 <input 
                   type="number"
                   value={salaryBase}
                   onChange={(e) => setSalaryBase(parseFloat(e.target.value))}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Corporate Allowances ($)</label>
+                <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Corporate Allowances ($)</label>
                 <input 
                   type="number"
                   value={salaryAllowances}
                   onChange={(e) => setSalaryAllowances(parseFloat(e.target.value))}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Monthly Deductions ($)</label>
+                <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Monthly Deductions ($)</label>
                 <input 
                   type="number"
                   value={salaryDeductions}
                   onChange={(e) => setSalaryDeductions(parseFloat(e.target.value))}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Income Tax Rate (e.g., 0.15 = 15%)</label>
+                <label className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-2">Income Tax Rate (e.g., 0.15 = 15%)</label>
                 <input 
                   type="number"
                   step="0.01"
@@ -1727,7 +1727,7 @@ export default function App() {
                   max="1.0"
                   value={salaryTaxRate}
                   onChange={(e) => setSalaryTaxRate(parseFloat(e.target.value))}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none"
                   required
                 />
               </div>
@@ -1736,13 +1736,13 @@ export default function App() {
                 <button 
                   type="button"
                   onClick={() => setSelectedEmpForSalary(null)}
-                  className="flex-1 py-3 bg-slate-950 border border-slate-800 text-slate-400 font-semibold rounded-xl text-xs hover:bg-slate-800"
+                  className="flex-1 py-3 bg-white border border-slate-300 text-slate-500 font-semibold rounded-xl text-xs hover:bg-slate-200"
                 >
                   Cancel
                 </button>
                 <button 
                   type="submit"
-                  className="flex-1 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-xs shadow-lg"
+                  className="flex-1 py-3 bg-indigo-600 hover:bg-indigo-500 text-slate-800 font-semibold rounded-xl text-xs shadow-lg"
                 >
                   Save Configuration
                 </button>
