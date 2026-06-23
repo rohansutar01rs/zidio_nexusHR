@@ -567,9 +567,6 @@ export default function App() {
         <div>
           {/* Logo */}
           <div className="p-6 flex items-center gap-3 border-b border-slate-200">
-            <div className="p-2 bg-indigo-600 rounded-xl text-white">
-              <BrainCircuit className="w-6 h-6" />
-            </div>
             <div>
               <span className="block font-bold text-lg text-slate-800 leading-tight">NexusHR</span>
               <span className="block text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Workforce Intel</span>
