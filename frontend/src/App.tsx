@@ -899,7 +899,7 @@ export default function App() {
                 {hasRole(['ROLE_ADMIN']) && (
                   <button 
                     onClick={() => setShowAddEmpModal(true)}
-                    className="py-3 px-5 bg-indigo-600 hover:bg-indigo-500 text-slate-800 rounded-2xl font-semibold flex items-center gap-2 text-sm shadow-lg shadow-indigo-600/10 transition-all"
+                    className="py-3 px-5 bg-[#3fc05e] hover:bg-[#2da54c] text-white rounded-2xl font-semibold flex items-center gap-2 text-sm shadow-lg shadow-green-500/20 transition-all"
                   >
                     <Plus className="w-5 h-5" />
                     Register Employee
