@@ -1013,54 +1013,56 @@ export default function App() {
                   <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                       <thead>
-                        <tr className="border-b border-slate-200">
-                          <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Employee</th>
-                          <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Leave Type</th>
-                          <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Duration</th>
-                          <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Reason</th>
-                          <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
-                          {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) && <th className="py-3 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Actions</th>}
+                        <tr className="border-b border-slate-200 bg-slate-50/50">
+                          <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Employee</th>
+                          <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Leave Type</th>
+                          <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Duration</th>
+                          <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Reason</th>
+                          <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
+                          {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) && <th className="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider text-right">Actions</th>}
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-900/60">
+                      <tbody className="divide-y divide-slate-200">
                         {leaves.map(l => {
                           const emp = employees.find(e => e.id === l.employeeId);
                           return (
-                            <tr key={l.id}>
-                              <td className="py-4.5 text-sm font-semibold text-slate-800">
+                            <tr key={l.id} className="hover:bg-slate-50/50 transition-colors">
+                              <td className="px-6 py-4 text-sm font-semibold text-slate-800">
                                 {emp ? emp.name : `ID: ${l.employeeId}`}
                               </td>
-                              <td className="py-4.5 text-sm text-slate-600 font-medium">{l.leaveType}</td>
-                              <td className="py-4.5 text-sm text-slate-500 font-medium">
+                              <td className="px-6 py-4 text-sm text-slate-600 font-medium">{l.leaveType}</td>
+                              <td className="px-6 py-4 text-sm text-slate-500 font-medium">
                                 {l.startDate} to {l.endDate}
                               </td>
-                              <td className="py-4.5 text-xs text-slate-500 max-w-[150px] truncate">{l.reason}</td>
-                              <td className="py-4.5">
-                                <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold tracking-wide ${
+                              <td className="px-6 py-4 text-xs text-slate-500 max-w-[250px] truncate">{l.reason}</td>
+                              <td className="px-6 py-4">
+                                <span className={`px-2.5 py-1 rounded-full text-[10px] font-extrabold tracking-wide ${
                                   l.status === 'APPROVED' 
-                                    ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
+                                    ? 'bg-emerald-50 text-emerald-600 border border-emerald-200' 
                                     : l.status === 'PENDING'
-                                    ? 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'
-                                    : 'bg-red-500/10 text-red-400 border border-red-500/20'
+                                    ? 'bg-yellow-50 text-yellow-600 border border-yellow-200'
+                                    : 'bg-red-50 text-red-600 border border-red-200'
                                 }`}>
                                   {l.status}
                                 </span>
                               </td>
                               {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) && (
-                                <td className="py-4.5 text-right space-x-1.5">
+                                <td className="px-6 py-4 text-right space-x-2">
                                   {l.status === 'PENDING' && (
                                     <>
                                       <button 
                                         onClick={() => handleUpdateLeave(l.id, 'APPROVED')}
-                                        className="p-1 bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/25 rounded-lg text-emerald-400 transition-all"
+                                        className="p-1.5 bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 rounded-lg text-emerald-600 transition-all shadow-sm"
+                                        title="Approve"
                                       >
-                                        <Check className="w-3.5 h-3.5" />
+                                        <Check className="w-4 h-4" />
                                       </button>
                                       <button 
                                         onClick={() => handleUpdateLeave(l.id, 'REJECTED')}
-                                        className="p-1 bg-red-500/10 border border-red-500/20 hover:bg-red-500/25 rounded-lg text-red-400 transition-all"
+                                        className="p-1.5 bg-red-50 border border-red-200 hover:bg-red-100 rounded-lg text-red-600 transition-all shadow-sm"
+                                        title="Reject"
                                       >
-                                        <X className="w-3.5 h-3.5" />
+                                        <X className="w-4 h-4" />
                                       </button>
                                     </>
                                   )}
