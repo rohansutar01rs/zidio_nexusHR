@@ -934,10 +934,10 @@ export default function App() {
 
           {/* 3. LEAVES VIEW */}
           {activeTab === 'leaves' && (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="space-y-8">
               
-              {/* Left column: apply leave form (Only for Employee profiles) */}
-              <div className="lg:col-span-1">
+              {/* Apply leave form (Only for Employee profiles) */}
+              <div>
                 <div className="bg-white border border-slate-200 rounded-3xl p-6 space-y-4">
                   <h3 className="text-base font-bold text-slate-800 flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-indigo-400" />
@@ -1002,8 +1002,8 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Right column: leaves history */}
-              <div className="lg:col-span-2 space-y-6">
+              {/* Leaves history */}
+              <div className="space-y-6">
                 <div className="bg-white border border-slate-200 rounded-3xl p-6">
                   <h3 className="text-base font-bold text-slate-800 mb-5 flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-indigo-400" />
