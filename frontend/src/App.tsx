@@ -109,14 +109,21 @@ export default function App() {
     setIsAiTyping(true);
     
     setTimeout(() => {
-      let reply = "Based on current telemetry, I've updated the action board.";
+      let reply = `I'm analyzing your request. As an AI Assistant in this demo environment, try asking me about "flight risks", "skill gaps", or "promotion candidates"!`;
       const inputLower = newMsg.content.toLowerCase();
-      if (inputLower.includes('risk') || inputLower.includes('flight')) {
-        reply = "I've analyzed the flight risks. Currently, 2 employees have high attrition probability due to low engagement scores and stale compensation.";
-      } else if (inputLower.includes('train') || inputLower.includes('skill')) {
-        reply = "I recommend full-stack leadership training for the engineering pod based on recent competency gaps.";
-      } else if (inputLower.includes('promote') || inputLower.includes('perform')) {
-        reply = "I have identified 3 top performers who are ready for promotion. They have consistently exceeded KPIs over the last 3 quarters.";
+      
+      if (inputLower.includes('risk') || inputLower.includes('flight') || inputLower.includes('leave') || inputLower.includes('quit')) {
+        reply = "I've analyzed the flight risks. Currently, 2 employees have high attrition probability due to low engagement scores and stale compensation. I've pinned them to the Action Board.";
+      } else if (inputLower.includes('train') || inputLower.includes('skill') || inputLower.includes('gap') || inputLower.includes('learn')) {
+        reply = "I recommend full-stack leadership training for the engineering pod based on recent competency gaps. Shall I draft a training schedule?";
+      } else if (inputLower.includes('promote') || inputLower.includes('perform') || inputLower.includes('raise') || inputLower.includes('best')) {
+        reply = "I have identified 3 top performers who are ready for promotion. They have consistently exceeded KPIs over the last 3 quarters. Their details are on the Action Board.";
+      } else if (inputLower.includes('hello') || inputLower.includes('hi') || inputLower.includes('hey')) {
+        reply = "Hello! I am Nexus AI. I'm actively monitoring the workforce. How can I assist you with your team today?";
+      } else if (inputLower.includes('thank')) {
+        reply = "You're very welcome! Let me know if you need any other insights.";
+      } else if (inputLower.includes('telemetry') || inputLower.includes('update')) {
+        reply = "Based on current telemetry, I've updated the action board with the latest system data.";
       }
       setAiChatMessages(prev => [...prev, { role: 'assistant', content: reply }]);
       setIsAiTyping(false);
