@@ -410,14 +410,7 @@ export default function App() {
     }
   };
 
-  const handleSelectEmployeeAiInsights = async (empId: number) => {
-    try {
-      const res = await api.getEmployeeAiInsights(empId);
-      setActiveEmployeeAi(res.data);
-    } catch (err) {
-      console.error('Error fetching employee AI insights:', err);
-    }
-  };
+
 
   // Pre-fill log in credentials
   const demoLogin = (role: string) => {
