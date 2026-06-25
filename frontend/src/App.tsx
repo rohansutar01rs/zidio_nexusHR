@@ -3,10 +3,7 @@ import {
   Users, Calendar, DollarSign, BrainCircuit, LogOut, Clock, User, Plus, Search, 
   Award, Shield, Activity, Check, X, Briefcase, Sliders, Download, AlertTriangle, ChevronRight, Send
 } from 'lucide-react';
-import { 
-  ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell,
-  LineChart, Line, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar
-} from 'recharts';
+
 import { api, useMock } from './services/api';
 
 // Types
@@ -94,7 +91,6 @@ export default function App() {
   const [payslips, setPayslips] = useState<Payslip[]>([]);
   const [currentUserProfile, setCurrentUserProfile] = useState<Employee | null>(null);
   const [aiSummary, setAiSummary] = useState<any>(null);
-  const [activeEmployeeAi, setActiveEmployeeAi] = useState<any>(null);
 
   // AI Chat State
   const [aiChatInput, setAiChatInput] = useState('');
@@ -437,21 +433,7 @@ export default function App() {
     }
   };
 
-  // Prepare Chart Data
-  const attritionData = [
-    { name: 'Low Risk', count: aiSummary?.lowRiskCount || 0, fill: '#10b981' },
-    { name: 'Medium Risk', count: aiSummary?.mediumRiskCount || 0, fill: '#f59e0b' },
-    { name: 'High Risk', count: aiSummary?.highRiskCount || 0, fill: '#ef4444' }
-  ];
 
-  const trendData = [
-    { name: 'Jan', score: 72 },
-    { name: 'Feb', score: 75 },
-    { name: 'Mar', score: 78 },
-    { name: 'Apr', score: 81 },
-    { name: 'May', score: 83 },
-    { name: 'Jun', score: aiSummary?.averageEngagement || 85 }
-  ];
 
   // Render Login / Signup Form
   if (!user) {
