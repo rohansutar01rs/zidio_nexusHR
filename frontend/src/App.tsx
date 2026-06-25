@@ -905,7 +905,7 @@ export default function App() {
                             </td>
                             <td className="px-6 py-4.5 text-right space-x-2">
                               <button 
-                                onClick={() => { handleSelectEmployeeAiInsights(emp.id); setActiveTab('ai-insights'); }}
+                                onClick={() => { setActiveTab('ai-insights'); }}
                                 className="px-3 py-1.5 bg-indigo-500/10 border border-indigo-500/30 hover:bg-indigo-500/25 rounded-xl text-xs font-semibold text-indigo-300 transition-all"
                               >
                                 AI Review
