@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Users, Calendar, DollarSign, BrainCircuit, LogOut, Clock, User, Plus, Search, 
-  Award, Shield, Activity, Check, X, Briefcase, Sliders, Download, AlertTriangle, ChevronRight
+  Award, Shield, Activity, Check, X, Briefcase, Sliders, Download, AlertTriangle, ChevronRight, Send
 } from 'lucide-react';
 import { 
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell,
@@ -95,6 +95,37 @@ export default function App() {
   const [currentUserProfile, setCurrentUserProfile] = useState<Employee | null>(null);
   const [aiSummary, setAiSummary] = useState<any>(null);
   const [activeEmployeeAi, setActiveEmployeeAi] = useState<any>(null);
+
+  // AI Chat State
+  const [aiChatInput, setAiChatInput] = useState('');
+  const [aiChatMessages, setAiChatMessages] = useState<{ role: 'user' | 'assistant', content: string }[]>([
+    { role: 'assistant', content: "Hello! I am your AI Workforce Intelligence assistant. I can analyze flight risks, suggest performance reviews, or summarize team competencies. How can I help you today?" }
+  ]);
+  const [isAiTyping, setIsAiTyping] = useState(false);
+
+  const handleAiChatSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!aiChatInput.trim()) return;
+    
+    const newMsg = { role: 'user' as const, content: aiChatInput };
+    setAiChatMessages(prev => [...prev, newMsg]);
+    setAiChatInput('');
+    setIsAiTyping(true);
+    
+    setTimeout(() => {
+      let reply = "Based on current telemetry, I've updated the action board.";
+      const inputLower = newMsg.content.toLowerCase();
+      if (inputLower.includes('risk') || inputLower.includes('flight')) {
+        reply = "I've analyzed the flight risks. Currently, 2 employees have high attrition probability due to low engagement scores and stale compensation.";
+      } else if (inputLower.includes('train') || inputLower.includes('skill')) {
+        reply = "I recommend full-stack leadership training for the engineering pod based on recent competency gaps.";
+      } else if (inputLower.includes('promote') || inputLower.includes('perform')) {
+        reply = "I have identified 3 top performers who are ready for promotion. They have consistently exceeded KPIs over the last 3 quarters.";
+      }
+      setAiChatMessages(prev => [...prev, { role: 'assistant', content: reply }]);
+      setIsAiTyping(false);
+    }, 1200);
+  };
 
   // Interactive states
   const [searchTerm, setSearchTerm] = useState('');
@@ -628,14 +659,14 @@ export default function App() {
             {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) && (
               <button 
                 onClick={() => setActiveTab('ai-insights')}
-                className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+                className={`w-full py-3 px-4 rounded-xl flex items-center gap-3 transition-all ${
                   activeTab === 'ai-insights' 
-                    ? 'bg-indigo-50 text-indigo-700 shadow-sm' 
-                    : 'text-slate-500 hover:bg-slate-100 hover:text-slate-800'
+                    ? 'bg-indigo-50 text-indigo-700 shadow-sm'
+                    : 'text-slate-600 hover:bg-slate-50'
                 }`}
               >
                 <BrainCircuit className="w-5 h-5 animate-pulse text-indigo-400" />
-                AI Workforce Insights
+                Workforce Intelligence
               </button>
             )}
           </nav>
@@ -1176,204 +1207,157 @@ export default function App() {
             </div>
           )}
 
-          {/* 5. AI WORKFORCE INSIGHTS VIEW */}
+          {/* 5. AI-POWERED WORKFORCE INTELLIGENCE VIEW */}
           {activeTab === 'ai-insights' && hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) && (
-            <div className="space-y-8">
+            <div className="space-y-8 h-full flex flex-col">
               
-              {/* Global AI workforce analytics widgets */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* 1. Attrition Risk distribution */}
-                <div className="bg-white border border-slate-200 rounded-3xl p-6">
-                  <span className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-4">Workforce Risk Distribution</span>
-                  <div className="h-48">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={attritionData}>
-                        <XAxis dataKey="name" stroke="#475569" fontSize={11} tickLine={false} />
-                        <YAxis stroke="#475569" fontSize={11} tickLine={false} />
-                        <Tooltip cursor={{ fill: 'rgba(255,255,255,0.03)' }} />
-                        <Bar dataKey="count" radius={[8, 8, 0, 0]}>
-                          {attritionData.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={entry.fill} />
-                          ))}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-
-                {/* 2. Engagement trends */}
-                <div className="bg-white border border-slate-200 rounded-3xl p-6">
-                  <span className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-4">Engagement Index Trend</span>
-                  <div className="h-48">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={trendData}>
-                        <XAxis dataKey="name" stroke="#475569" fontSize={11} tickLine={false} />
-                        <YAxis domain={[40, 100]} stroke="#475569" fontSize={11} tickLine={false} />
-                        <Tooltip />
-                        <Line type="monotone" dataKey="score" stroke="#6366f1" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 6 }} />
-                      </LineChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-              </div>
-
-              {/* Selector Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 flex-1 min-h-[600px]">
                 
-                {/* Left Employee List Selector */}
-                <div className="lg:col-span-1 bg-white border border-slate-200 rounded-3xl p-6">
-                  <h3 className="text-base font-bold text-slate-800 mb-4 flex items-center gap-2">
-                    <Users className="w-5 h-5 text-indigo-400" />
-                    Select Employee for AI Audit
-                  </h3>
-                  <div className="space-y-2 max-h-[400px] overflow-y-auto pr-2">
-                    {employees.map(emp => (
-                      <button 
-                        key={emp.id}
-                        onClick={() => handleSelectEmployeeAiInsights(emp.id)}
-                        className={`w-full p-3.5 rounded-2xl border text-left flex items-center justify-between transition-all ${
-                          activeEmployeeAi?.employeeName === emp.name
-                            ? 'bg-indigo-600/10 border-indigo-600'
-                            : 'bg-white/60 border-slate-200 hover:border-slate-300'
-                        }`}
-                      >
-                        <div className="flex items-center gap-2">
-                          <span className="block font-semibold text-sm text-slate-800">{emp.name}</span>
-                          <span className="block text-[10px] text-slate-500 font-medium mt-0.5">{emp.jobTitle}</span>
+                {/* Left: Smart Action Board (Kanban Style) */}
+                <div className="lg:col-span-1 space-y-6 flex flex-col">
+                  <div className="bg-white border border-slate-200 rounded-3xl p-6 flex-1 shadow-sm">
+                    <h3 className="text-base font-bold text-slate-800 mb-6 flex items-center gap-2">
+                      <Briefcase className="w-5 h-5 text-indigo-500" />
+                      Proactive Action Board
+                    </h3>
+                    
+                    <div className="space-y-4">
+                      {/* Flight Risks */}
+                      <div className="bg-red-50 border border-red-100 rounded-2xl p-4">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-bold text-red-600 uppercase tracking-wider flex items-center gap-1.5">
+                            <AlertTriangle className="w-3.5 h-3.5" /> Flight Risks
+                          </span>
+                          <span className="bg-red-100 text-red-700 text-[10px] font-bold px-2 py-0.5 rounded-full">2 Action Items</span>
                         </div>
-                        <ChevronRight className="w-4 h-4 text-slate-500" />
-                      </button>
-                    ))}
+                        <div className="space-y-2">
+                          <div className="bg-white rounded-xl p-3 shadow-sm border border-red-100/50 flex justify-between items-center cursor-pointer hover:border-red-300 transition-colors">
+                            <div>
+                              <span className="block text-sm font-semibold text-slate-800">Sarah Jenkins</span>
+                              <span className="block text-[10px] text-slate-500">Low engagement, stale comp</span>
+                            </div>
+                            <ChevronRight className="w-4 h-4 text-slate-400" />
+                          </div>
+                          <div className="bg-white rounded-xl p-3 shadow-sm border border-red-100/50 flex justify-between items-center cursor-pointer hover:border-red-300 transition-colors">
+                            <div>
+                              <span className="block text-sm font-semibold text-slate-800">Mike Thompson</span>
+                              <span className="block text-[10px] text-slate-500">High stress, missed leave</span>
+                            </div>
+                            <ChevronRight className="w-4 h-4 text-slate-400" />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Ready for Promotion */}
+                      <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-4">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider flex items-center gap-1.5">
+                            <Award className="w-3.5 h-3.5" /> Promotion Candidates
+                          </span>
+                          <span className="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full">3 Ready</span>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="bg-white rounded-xl p-3 shadow-sm border border-emerald-100/50 flex justify-between items-center cursor-pointer hover:border-emerald-300 transition-colors">
+                            <div>
+                              <span className="block text-sm font-semibold text-slate-800">Emily Chen</span>
+                              <span className="block text-[10px] text-slate-500">Exceeded KPIs 3 quarters</span>
+                            </div>
+                            <ChevronRight className="w-4 h-4 text-slate-400" />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Training Gaps */}
+                      <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-bold text-amber-600 uppercase tracking-wider flex items-center gap-1.5">
+                            <Shield className="w-3.5 h-3.5" /> Skill Gaps
+                          </span>
+                          <span className="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded-full">1 Training Needed</span>
+                        </div>
+                        <div className="bg-white rounded-xl p-3 shadow-sm border border-amber-100/50 flex justify-between items-center cursor-pointer hover:border-amber-300 transition-colors">
+                          <div>
+                            <span className="block text-sm font-semibold text-slate-800">Engineering Pod B</span>
+                            <span className="block text-[10px] text-slate-500">Leadership & Management</span>
+                          </div>
+                          <ChevronRight className="w-4 h-4 text-slate-400" />
+                        </div>
+                      </div>
+
+                    </div>
                   </div>
                 </div>
 
-                {/* Right: Detailed AI Audit Panel */}
-                <div className="lg:col-span-2 bg-white border border-slate-200 rounded-3xl p-6">
-                  {activeEmployeeAi ? (
-                    <div className="space-y-6">
-                      <div className="flex items-center justify-between border-b border-slate-200 pb-4">
-                        <div>
-                          <h3 className="text-lg font-bold text-slate-800">{activeEmployeeAi.employeeName}</h3>
-                          <span className="text-xs text-slate-500 font-medium">{activeEmployeeAi.jobTitle} AI Workforce Profile</span>
-                        </div>
-                        <div className="bg-indigo-500/10 px-3.5 py-1.5 border border-indigo-500/20 rounded-2xl flex items-center gap-2">
-                          <Activity className="w-4 h-4 text-indigo-400" />
-                          <span className="text-xs font-bold text-indigo-300">Predictive Intelligence Active</span>
-                        </div>
-                      </div>
-
-                      {/* Flight Risk and Engagement Cards */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        
-                        {/* Flight Risk Alert */}
-                        <div className="bg-white/60 border border-slate-200/60 p-5 rounded-2xl relative overflow-hidden">
-                          <span className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-3">Attrition Risk Evaluation</span>
-                          <div className="flex items-baseline gap-2">
-                            <span className={`text-3xl font-black ${
-                              activeEmployeeAi.attrition.riskLevel === 'HIGH' ? 'text-red-400' : 'text-emerald-400'
-                            }`}>
-                              {activeEmployeeAi.attrition.riskLevel}
-                            </span>
-                          </div>
-                          
-                          <div className="mt-4 space-y-1">
-                            <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Identified Risk Drivers</span>
-                            {activeEmployeeAi.attrition.drivers.map((driver: string, idx: number) => (
-                              <span key={idx} className="text-xs text-slate-600 flex items-center gap-2">
-                                <span className="w-1 h-1 bg-red-400 rounded-full"></span>
-                                {driver}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Engagement Index */}
-                        <div className="bg-white/60 border border-slate-200/60 p-5 rounded-2xl">
-                          <span className="block text-slate-500 text-xs font-bold uppercase tracking-wider mb-3">Workforce Engagement Index</span>
-                          <span className="text-3xl font-black text-indigo-400">{activeEmployeeAi.engagementScore}%</span>
-                          <div className="w-full bg-white rounded-full h-1.5 mt-3">
-                            <div className="bg-indigo-500 h-1.5 rounded-full" style={{ width: `${activeEmployeeAi.engagementScore}%` }}></div>
-                          </div>
-                          <span className="block text-[10px] text-slate-500 mt-2 font-medium">Derived from system attendance, performance history & leaves</span>
-                        </div>
-
-                      </div>
-
-                      {/* Skill Gaps Analysis */}
-                      <div className="bg-white/20 border border-slate-200 p-5 rounded-2xl space-y-4">
-                        <span className="block text-slate-600 text-xs font-bold uppercase tracking-wider">Roles Competency & Skill Gap Analysis</span>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <div className="space-y-4">
-                            <div>
-                              <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">Current Skills</span>
-                              <div className="flex flex-wrap gap-1.5">
-                                {activeEmployeeAi.skills.current.map((skill: string, idx: number) => (
-                                  <span key={idx} className="px-2.5 py-1 bg-slate-100 border border-slate-300 rounded-lg text-xs font-medium text-slate-600">{skill}</span>
-                                ))}
-                              </div>
-                            </div>
-
-                            <div>
-                              <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">Missing Target Competencies</span>
-                              <div className="flex flex-wrap gap-1.5">
-                                {activeEmployeeAi.skills.gap.map((skill: string, idx: number) => (
-                                  <span key={idx} className="px-2.5 py-1 bg-red-500/10 border border-red-500/20 rounded-lg text-xs font-medium text-red-300">{skill}</span>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Skills gap Radar chart */}
-                          <div className="h-60 mt-4 bg-white/20 rounded-2xl p-2 border border-slate-200">
-                            <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2 text-center">Competency Radar Matrix</span>
-                            <ResponsiveContainer width="100%" height="80%">
-                              <RadarChart cx="50%" cy="50%" outerRadius="80%" data={
-                                activeEmployeeAi.skills.required.map((skill: string) => {
-                                  const hasSkill = activeEmployeeAi.skills.current.includes(skill);
-                                  return {
-                                    subject: skill,
-                                    current: hasSkill ? 100 : 0,
-                                    required: 100,
-                                    fullMark: 100
-                                  };
-                                })
-                              }>
-                                <PolarGrid stroke="#1e293b" />
-                                <PolarAngleAxis dataKey="subject" tick={{ fill: '#94a3b8', fontSize: 10 }} />
-                                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fill: '#475569' }} />
-                                <Radar name="Employee" dataKey="current" stroke="#6366f1" fill="#6366f1" fillOpacity={0.3} />
-                                <Radar name="Required" dataKey="required" stroke="#ec4899" fill="#ec4899" fillOpacity={0.1} />
-                                <Tooltip />
-                              </RadarChart>
-                            </ResponsiveContainer>
-                          </div>
-
-                        </div>
-
-                        <div className="border-t border-slate-200 pt-4">
-                          <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">AI Recommendation Action</span>
-                          <p className="text-xs text-indigo-300 leading-relaxed font-semibold">
-                            {activeEmployeeAi.attrition.recommendation}
-                          </p>
-                          <p className="text-xs text-slate-500 mt-2 leading-relaxed">
-                            {activeEmployeeAi.skills.trainingRecommendation}
-                          </p>
-                        </div>
-                      </div>
-
+                {/* Right: AI Chat Interface */}
+                <div className="lg:col-span-2 bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm flex flex-col h-full">
+                  
+                  {/* Chat Header */}
+                  <div className="p-6 border-b border-slate-100 bg-slate-50/50 flex items-center gap-4">
+                    <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-inner shadow-indigo-400/20">
+                      <BrainCircuit className="w-6 h-6 text-white" />
                     </div>
-                  ) : (
-                    <div className="h-[400px] flex flex-col items-center justify-center text-center text-slate-500">
-                      <BrainCircuit className="w-12 h-12 text-slate-600 mb-3 animate-pulse" />
-                      <span className="text-xs font-bold uppercase tracking-wider">No Employee Audited</span>
-                      <p className="text-xs text-slate-600 max-w-xs mt-1">Select an employee from the left panel to execute real-time AI predictive attrition and skill analysis.</p>
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-800">Nexus AI Assistant</h3>
+                      <span className="text-xs font-semibold text-indigo-500 flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Online & Analyzing
+                      </span>
                     </div>
-                  )}
+                  </div>
+
+                  {/* Chat Messages */}
+                  <div className="flex-1 p-6 overflow-y-auto space-y-6 bg-slate-50/30">
+                    {aiChatMessages.map((msg, idx) => (
+                      <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                        <div className={`max-w-[80%] rounded-2xl p-4 text-sm leading-relaxed shadow-sm ${
+                          msg.role === 'user' 
+                            ? 'bg-indigo-600 text-white rounded-br-none' 
+                            : 'bg-white border border-slate-200 text-slate-700 rounded-bl-none'
+                        }`}>
+                          {msg.content}
+                        </div>
+                      </div>
+                    ))}
+                    {isAiTyping && (
+                      <div className="flex justify-start">
+                        <div className="bg-white border border-slate-200 rounded-2xl rounded-bl-none p-4 shadow-sm flex gap-1.5 items-center">
+                          <span className="w-2 h-2 bg-slate-300 rounded-full animate-bounce"></span>
+                          <span className="w-2 h-2 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '0.15s' }}></span>
+                          <span className="w-2 h-2 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Chat Input */}
+                  <div className="p-6 bg-white border-t border-slate-100">
+                    <form onSubmit={handleAiChatSubmit} className="relative flex items-center">
+                      <input 
+                        type="text"
+                        value={aiChatInput}
+                        onChange={(e) => setAiChatInput(e.target.value)}
+                        placeholder="Ask me anything about the workforce..."
+                        className="w-full pl-5 pr-14 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white transition-all shadow-inner"
+                      />
+                      <button 
+                        type="submit"
+                        disabled={!aiChatInput.trim() || isAiTyping}
+                        className="absolute right-2 p-2.5 bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-300 disabled:cursor-not-allowed text-white rounded-xl transition-all"
+                      >
+                        <Send className="w-4 h-4" />
+                      </button>
+                    </form>
+                    <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 shrink-0 self-center mr-1">Suggestions:</span>
+                      <button type="button" onClick={() => setAiChatInput('Who are the biggest flight risks?')} className="shrink-0 text-xs text-indigo-600 bg-indigo-50 hover:bg-indigo-100 px-3 py-1.5 rounded-lg font-medium transition-colors">Find flight risks</button>
+                      <button type="button" onClick={() => setAiChatInput('Who is ready for a promotion?')} className="shrink-0 text-xs text-emerald-600 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg font-medium transition-colors">Promotion candidates</button>
+                      <button type="button" onClick={() => setAiChatInput('What skills does engineering need?')} className="shrink-0 text-xs text-amber-600 bg-amber-50 hover:bg-amber-100 px-3 py-1.5 rounded-lg font-medium transition-colors">Analyze skill gaps</button>
+                    </div>
+                  </div>
+
                 </div>
 
               </div>
-
             </div>
           )}
 
