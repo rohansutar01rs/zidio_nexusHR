@@ -964,7 +964,8 @@ export default function App() {
                         type="date"
                         value={leaveStart}
                         onChange={(e) => setLeaveStart(e.target.value)}
-                        className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none focus:border-indigo-500 text-sm"
+                        onClick={(e) => { try { (e.target as HTMLInputElement).showPicker(); } catch(err) {} }}
+                        className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none focus:border-indigo-500 text-sm cursor-pointer"
                         required
                       />
                     </div>
@@ -975,7 +976,8 @@ export default function App() {
                         type="date"
                         value={leaveEnd}
                         onChange={(e) => setLeaveEnd(e.target.value)}
-                        className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none focus:border-indigo-500 text-sm"
+                        onClick={(e) => { try { (e.target as HTMLInputElement).showPicker(); } catch(err) {} }}
+                        className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-800 focus:outline-none focus:border-indigo-500 text-sm cursor-pointer"
                         required
                       />
                     </div>
