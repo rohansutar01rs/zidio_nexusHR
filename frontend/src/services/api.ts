@@ -393,6 +393,9 @@ const mockRequest = (path: string, options: RequestInit = {}): any => {
         }
       };
     }
+    if (path.includes('/simulate-run')) {
+      return { success: true, message: 'AI simulation run completed.' };
+    }
   }
 
   // 8. Payroll Services
