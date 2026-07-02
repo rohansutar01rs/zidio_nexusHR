@@ -3,7 +3,10 @@ import {
   Users, Calendar, DollarSign, BrainCircuit, LogOut, Clock, User, Plus, Search, 
   Award, Shield, Activity, Check, X, Briefcase, Sliders, Download, AlertTriangle, ChevronRight, Send
 } from 'lucide-react';
-
+import { 
+  ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell,
+  LineChart, Line, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar
+} from 'recharts';
 import { api, useMock } from './services/api';
 
 // Types
@@ -434,6 +437,22 @@ export default function App() {
   };
 
 
+
+  // Prepare Chart Data
+  const attritionData = [
+    { name: 'Low Risk', count: aiSummary?.lowRiskCount || 0, fill: '#10b981' },
+    { name: 'Medium Risk', count: aiSummary?.mediumRiskCount || 0, fill: '#f59e0b' },
+    { name: 'High Risk', count: aiSummary?.highRiskCount || 0, fill: '#ef4444' }
+  ];
+
+  const trendData = [
+    { name: 'Jan', score: 72 },
+    { name: 'Feb', score: 75 },
+    { name: 'Mar', score: 78 },
+    { name: 'Apr', score: 81 },
+    { name: 'May', score: 83 },
+    { name: 'Jun', score: aiSummary?.averageEngagement || 85 }
+  ];
 
   // Render Login / Signup Form
   if (!user) {
@@ -1193,6 +1212,46 @@ export default function App() {
           {activeTab === 'ai-insights' && hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) && (
             <div className="space-y-8 h-full flex flex-col">
               
+              {/* Top: AI Graphs */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-4">
+                <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+                  <h3 className="text-base font-bold text-slate-800 mb-6 flex items-center gap-2">
+                    <Activity className="w-5 h-5 text-indigo-500" />
+                    Overall Attrition Risk
+                  </h3>
+                  <div className="h-64">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={attritionData} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                        <XAxis type="number" hide />
+                        <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} />
+                        <Tooltip cursor={{fill: 'transparent'}} />
+                        <Bar dataKey="count" radius={[0, 10, 10, 0]}>
+                          {attritionData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.fill} />
+                          ))}
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+                <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+                  <h3 className="text-base font-bold text-slate-800 mb-6 flex items-center gap-2">
+                    <BrainCircuit className="w-5 h-5 text-purple-500" />
+                    Engagement Trend
+                  </h3>
+                  <div className="h-64">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart data={trendData}>
+                        <XAxis dataKey="name" axisLine={false} tickLine={false} />
+                        <YAxis hide domain={['dataMin - 10', 'dataMax + 10']} />
+                        <Tooltip cursor={false} />
+                        <Line type="monotone" dataKey="score" stroke="#8b5cf6" strokeWidth={4} dot={{ r: 6, fill: '#8b5cf6', strokeWidth: 0 }} activeDot={{ r: 8 }} />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 flex-1 min-h-[600px]">
                 
                 {/* Left: Smart Action Board (Kanban Style) */}
