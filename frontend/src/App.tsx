@@ -1266,7 +1266,7 @@ export default function App() {
                         <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12 }} />
                         <YAxis hide domain={['dataMin - 10', 'dataMax + 10']} />
                         <Tooltip cursor={false} />
-                        <Line type="monotone" dataKey="score" stroke="#8b5cf6" strokeWidth={4} dot={{ r: 4, lg: { r: 6 }, fill: '#8b5cf6', strokeWidth: 0 }} activeDot={{ r: 8 }} />
+                        <Line type="monotone" dataKey="score" stroke="#8b5cf6" strokeWidth={4} dot={{ r: 5, fill: '#8b5cf6', strokeWidth: 0 }} activeDot={{ r: 8 }} />
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
