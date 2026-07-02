@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Users, Calendar, DollarSign, BrainCircuit, LogOut, Clock, User, Plus, Search, 
-  Award, Shield, Activity, Check, X, Briefcase, Sliders, Download, AlertTriangle, ChevronRight, Send
+  Award, Shield, Activity, Check, X, Briefcase, Sliders, Download, AlertTriangle, ChevronRight, Send, Menu
 } from 'lucide-react';
 import { 
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell,
@@ -135,6 +135,7 @@ export default function App() {
 
   // Interactive states
   const [searchTerm, setSearchTerm] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isClockedIn, setIsClockedIn] = useState(false);
   const [clockInRecord, setClockInRecord] = useState<Attendance | null>(null);
   const [showAddEmpModal, setShowAddEmpModal] = useState(false);
@@ -592,23 +593,37 @@ export default function App() {
 
   // Active views content generators
   return (
-    <div className="min-h-screen flex bg-slate-100">
+    <div className="min-h-screen flex bg-slate-100 overflow-hidden">
       
+      {/* MOBILE OVERLAY */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-slate-900/50 z-40 lg:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
       {/* SIDEBAR */}
-      <aside className="w-64 bg-white/90 border-r border-slate-200 flex flex-col justify-between select-none">
+      <aside className={`w-64 bg-white/90 border-r border-slate-200 flex flex-col justify-between select-none fixed inset-y-0 left-0 z-50 transform transition-transform duration-300 lg:relative lg:translate-x-0 ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div>
           {/* Logo */}
-          <div className="p-6 flex items-center gap-3 border-b border-slate-200">
+          <div className="p-6 flex items-center justify-between gap-3 border-b border-slate-200">
             <div>
               <span className="block font-bold text-lg text-slate-800 leading-tight">NexusHR</span>
               <span className="block text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Workforce Intel</span>
             </div>
+            <button 
+              className="lg:hidden p-1 rounded-md text-slate-400 hover:text-slate-600 hover:bg-slate-100"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
 
           {/* Navigation Items */}
           <nav className="p-4 space-y-1.5">
             <button 
-              onClick={() => setActiveTab('dashboard')}
+              onClick={() => { setActiveTab('dashboard'); setIsMobileMenuOpen(false); }}
               className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === 'dashboard' 
                   ? 'bg-indigo-50 text-indigo-700 shadow-sm' 
@@ -621,7 +636,7 @@ export default function App() {
 
             {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) && (
               <button 
-                onClick={() => setActiveTab('employees')}
+                onClick={() => { setActiveTab('employees'); setIsMobileMenuOpen(false); }}
                 className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                   activeTab === 'employees' 
                     ? 'bg-indigo-50 text-indigo-700 shadow-sm' 
@@ -634,7 +649,7 @@ export default function App() {
             )}
 
             <button 
-              onClick={() => setActiveTab('leaves')}
+              onClick={() => { setActiveTab('leaves'); setIsMobileMenuOpen(false); }}
               className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === 'leaves' 
                   ? 'bg-indigo-50 text-indigo-700 shadow-sm' 
@@ -646,7 +661,7 @@ export default function App() {
             </button>
 
             <button 
-              onClick={() => setActiveTab('payroll')}
+              onClick={() => { setActiveTab('payroll'); setIsMobileMenuOpen(false); }}
               className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === 'payroll' 
                   ? 'bg-indigo-50 text-indigo-700 shadow-sm' 
@@ -659,7 +674,7 @@ export default function App() {
 
             {hasRole(['ROLE_ADMIN', 'ROLE_MANAGER']) && (
               <button 
-                onClick={() => setActiveTab('ai-insights')}
+                onClick={() => { setActiveTab('ai-insights'); setIsMobileMenuOpen(false); }}
                 className={`w-full py-3 px-4 rounded-xl flex items-center gap-3 transition-all ${
                   activeTab === 'ai-insights' 
                     ? 'bg-indigo-50 text-indigo-700 shadow-sm'
@@ -698,14 +713,20 @@ export default function App() {
       </aside>
 
       {/* MAIN CONTAINER */}
-      <main className="flex-1 flex flex-col min-h-screen overflow-y-auto">
+      <main className="flex-1 flex flex-col min-h-screen overflow-y-auto lg:w-[calc(100%-16rem)]">
         
         {/* HEADER */}
-        <header className="px-8 py-5 border-b border-slate-200 bg-white/20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+        <header className="px-4 lg:px-8 py-5 border-b border-slate-200 bg-white/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <button 
+              className="lg:hidden p-2 -ml-2 rounded-lg text-slate-500 hover:bg-slate-200/50"
+              onClick={() => setIsMobileMenuOpen(true)}
+            >
+              <Menu className="w-6 h-6" />
+            </button>
             <span className="text-xl font-extrabold text-slate-800 capitalize tracking-tight">{activeTab.replace('-', ' ')}</span>
             {useMock && (
-              <span className="px-2 py-0.5 bg-yellow-500/15 border border-yellow-500/30 text-yellow-300 text-[10px] font-bold rounded-full ml-3 tracking-wide">
+              <span className="hidden md:inline-block px-2 py-0.5 bg-yellow-500/15 border border-yellow-500/30 text-yellow-300 text-[10px] font-bold rounded-full ml-3 tracking-wide">
                 DEMO OFFLINE MODE
               </span>
             )}
@@ -735,7 +756,7 @@ export default function App() {
         </header>
 
         {/* PAGE BODY */}
-        <div className="p-8">
+        <div className="p-4 lg:p-8 overflow-x-hidden">
 
           {/* 1. DASHBOARD VIEW */}
           {activeTab === 'dashboard' && (
@@ -1213,17 +1234,17 @@ export default function App() {
             <div className="space-y-8 h-full flex flex-col">
               
               {/* Top: AI Graphs */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-4">
-                <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 mb-4">
+                <div className="bg-white border border-slate-200 rounded-3xl p-4 lg:p-6 shadow-sm overflow-hidden">
                   <h3 className="text-base font-bold text-slate-800 mb-6 flex items-center gap-2">
                     <Activity className="w-5 h-5 text-indigo-500" />
                     Overall Attrition Risk
                   </h3>
-                  <div className="h-64">
+                  <div className="h-48 lg:h-64 -ml-4 lg:ml-0">
                     <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={attritionData} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                      <BarChart data={attritionData} layout="vertical" margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
                         <XAxis type="number" hide />
-                        <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} />
+                        <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{ fontSize: 12 }} />
                         <Tooltip cursor={{fill: 'transparent'}} />
                         <Bar dataKey="count" radius={[0, 10, 10, 0]}>
                           {attritionData.map((entry, index) => (
@@ -1234,25 +1255,25 @@ export default function App() {
                     </ResponsiveContainer>
                   </div>
                 </div>
-                <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+                <div className="bg-white border border-slate-200 rounded-3xl p-4 lg:p-6 shadow-sm overflow-hidden">
                   <h3 className="text-base font-bold text-slate-800 mb-6 flex items-center gap-2">
                     <BrainCircuit className="w-5 h-5 text-purple-500" />
                     Engagement Trend
                   </h3>
-                  <div className="h-64">
+                  <div className="h-48 lg:h-64 -ml-6 lg:ml-0">
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={trendData}>
-                        <XAxis dataKey="name" axisLine={false} tickLine={false} />
+                        <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12 }} />
                         <YAxis hide domain={['dataMin - 10', 'dataMax + 10']} />
                         <Tooltip cursor={false} />
-                        <Line type="monotone" dataKey="score" stroke="#8b5cf6" strokeWidth={4} dot={{ r: 6, fill: '#8b5cf6', strokeWidth: 0 }} activeDot={{ r: 8 }} />
+                        <Line type="monotone" dataKey="score" stroke="#8b5cf6" strokeWidth={4} dot={{ r: 4, lg: { r: 6 }, fill: '#8b5cf6', strokeWidth: 0 }} activeDot={{ r: 8 }} />
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 flex-1 min-h-[600px]">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8 flex-1 min-h-[600px]">
                 
                 {/* Left: Smart Action Board (Kanban Style) */}
                 <div className="lg:col-span-1 space-y-6 flex flex-col">
